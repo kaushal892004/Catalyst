@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="dashboard-hero">
+    <h1>Welcome Back, {{ user.username }}!</h1>
+    <p>Your journey to success continues. Here's an overview of your activities and opportunities.</p>
+</div>
+
+<div class="dashboard-overview">
+    <div class="overview-item profile">
+        <h2>Your Profile</h2>
+        <p>View and update your personal details, skills, and resume.</p>
+        <a href="{{ url_for('profile') }}" class="btn">View Profile</a>
+    </div>
+    <div class="overview-item saved-opportunities">
+        <h2>Saved Opportunities</h2>
+        <p>Jobs, internships, and competitions you've saved for later.</p>
+        <a href="{{ url_for('saved_opportunities') }}" class="btn">View Saved</a>
+    </div>
+    <div class="overview-item applications">
+        <h2>Your Applications</h2>
+        <p>Track the status of your job and internship applications.</p>
+        <a href="{{ url_for('applications') }}" class="btn">View Applications</a>
+    </div>
+    <div class="overview-item learning">
+        <h2>Learning Progress</h2>
+        <p>Continue your courses and track progress.</p>
+        <a href="{{ url_for('learning_progress') }}" class="btn">Continue Learning</a>
+    </div>
+    <div class="overview-item competitions">
+        <h2>Your Competitions</h2>
+        <p>See your participation and achievements in competitions.</p>
+        <a href="{{ url_for('competitions') }}" class="btn">View Competitions</a>
+    </div>
+    <div class="overview-item mentorship">
+        <h2>Your Mentorship</h2>
+        <p>Connect with mentors and track your mentorship progress.</p>
+        <a href="{{ url_for('mentorship') }}" class="btn">View Mentorship</a>
+    </div>
+</div>
+{% endblock %}
