@@ -40,19 +40,20 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 30px;
+            padding: 10px 25px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             transition: background-color 0.3s, padding 0.3s;
         }
+      
 
         .logo img {
             height: 50px;
             transition: height 0.3s;
         }
 
-        header:hover .logo img {
+        /* header:hover .logo img {
             height: 55px;
-        }
+        } */
 
         nav {
             display: flex;
@@ -65,8 +66,28 @@
             transition: color 0.3s;
         }
 
-        nav a:hover {
-            color: #007bff;
+        nav a {
+            display: inline-block;
+            position: relative;
+           
+        }
+
+        nav a:after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #8e1414;
+            transform-origin: bottom right;
+            transition: transform 0.25s ease-out;
+        }
+
+        nav a:hover:after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
         }
 
         .actions {
@@ -329,7 +350,8 @@
         <div class="footer-content">
             <div class="footer-section">
                 <img src="{{ url_for('static', filename='images/image.png') }}" alt="Footer Logo" class="footer-logo">
-                <p>Career Boost Platform is dedicated to helping you achieve your career goals with cutting-edge resources and opportunities.</p>
+                <p>Career Boost Platform is dedicated to helping you achieve your career goals with cutting-edge
+                    resources and opportunities.</p>
             </div>
             <div class="footer-section">
                 <h3>Quick Links</h3>
