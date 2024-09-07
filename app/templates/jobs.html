@@ -1,29 +1,70 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="section-header">
-    <h1>Jobs</h1>
-    <p>Explore job opportunities that match your qualifications and career goals.</p>
-</div>
-
-<div class="job-list">
-    <!-- Example Job Card -->
-    <div class="job-card">
-        <h2>Full Stack Developer</h2>
-        <p>Company: Code Masters</p>
-        <p>Location: Hyderabad</p>
-        <p>Experience: 2+ years</p>
-        <a href="#" class="btn">Apply Now</a>
+<div class="min-h-screen bg-gradient-to-r from-blue-50 to-blue-100 p-10">
+    <!-- Section Header -->
+    <div class="section-header text-center mb-12">
+        <h1 class="text-5xl font-extrabold text-gray-800 mb-4">Jobs</h1>
+        <p class="text-xl text-gray-600">Explore job opportunities that match your qualifications and career goals.</p>
     </div>
 
-    <div class="job-card">
-        <h2>Product Manager</h2>
-        <p>Company: Innovate Corp</p>
-        <p>Location: Mumbai</p>
-        <p>Experience: 5+ years</p>
-        <a href="#" class="btn">Apply Now</a>
+    <!-- Job Filters -->
+    <div class="job-filters flex justify-center space-x-4 mb-8">
+        <select class="filter-select bg-white border border-gray-300 text-gray-800 py-2 px-4 rounded-lg">
+            <option value="">Location</option>
+            <option value="hyderabad">Hyderabad</option>
+            <option value="mumbai">Mumbai</option>
+            <option value="bangalore">Bangalore</option>
+        </select>
+        <select class="filter-select bg-white border border-gray-300 text-gray-800 py-2 px-4 rounded-lg">
+            <option value="">Experience</option>
+            <option value="0-2">0-2 years</option>
+            <option value="2-5">2-5 years</option>
+            <option value="5+">5+ years</option>
+        </select>
+        <select class="filter-select bg-white border border-gray-300 text-gray-800 py-2 px-4 rounded-lg">
+            <option value="">Job Type</option>
+            <option value="full-time">Full-Time</option>
+            <option value="part-time">Part-Time</option>
+            <option value="contract">Contract</option>
+        </select>
     </div>
 
-    <!-- Add more job cards as needed -->
+    <!-- Job List -->
+    <div class="job-list grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Job Card -->
+        <div class="job-card bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300">
+            <img src="https://example.com/job1.jpg" alt="Full Stack Developer" class="w-full h-48 object-cover">
+            <div class="p-6">
+                <h2 class="text-2xl font-semibold text-gray-800 mb-4">Full Stack Developer</h2>
+                <p class="text-gray-600 mb-2"><i class="fas fa-building mr-2"></i> Company: Code Masters</p>
+                <p class="text-gray-600 mb-2"><i class="fas fa-map-marker-alt mr-2"></i> Location: Hyderabad</p>
+                <p class="text-gray-600 mb-4"><i class="fas fa-briefcase mr-2"></i> Experience: 2+ years</p>
+                <a href="#" class="btn bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700">Apply Now</a>
+            </div>
+        </div>
+
+        <!-- Job Card -->
+        <div class="job-card bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300">
+            <img src="https://example.com/job2.jpg" alt="Product Manager" class="w-full h-48 object-cover">
+            <div class="p-6">
+                <h2 class="text-2xl font-semibold text-gray-800 mb-4">Product Manager</h2>
+                <p class="text-gray-600 mb-2"><i class="fas fa-building mr-2"></i> Company: Innovate Corp</p>
+                <p class="text-gray-600 mb-2"><i class="fas fa-map-marker-alt mr-2"></i> Location: Mumbai</p>
+                <p class="text-gray-600 mb-4"><i class="fas fa-briefcase mr-2"></i> Experience: 5+ years</p>
+                <a href="#" class="btn bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700">Apply Now</a>
+            </div>
+        </div>
+
+        <!-- Add more job cards with infinite scrolling -->
+    </div>
+
+    <!-- Infinite Scroll Trigger -->
+    <div class="infinite-scroll-trigger text-center mt-12">
+        <button class="btn bg-green-600 text-white py-3 px-6 rounded-lg hover:bg-green-700">
+            Load More Jobs
+        </button>
+    </div>
 </div>
+
 {% endblock %}
