@@ -2,76 +2,76 @@
 
 {% block content %}
 <style>
-/* Opportunity Cards Styles */
-.opportunities {
-    /* width: 80vw; */
-    display: flex;
-    /* flex-wrap: wrap; */
-    gap: 20px;
-    align-items: center;
-    justify-content: center;
-    margin: 40px 0;
-}
+    /* Opportunity Cards Styles */
+    .opportunities {
+        /* width: 80vw; */
+        display: flex;
+        /* flex-wrap: wrap; */
+        gap: 20px;
+        align-items: center;
+        justify-content: center;
+        margin: 40px 0;
+    }
 
-.opportunity-card {
-    width: 300px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    transition: transform 0.3s, box-shadow 0.3s;
-    text-align: center;
-    position: relative;
-}
+    .opportunity-card {
+        width: 300px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        transition: transform 0.3s, box-shadow 0.3s;
+        text-align: center;
+        position: relative;
+    }
 
-.opportunity-card img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    transition: opacity 0.3s;
-}
+    .opportunity-card img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+        transition: opacity 0.3s;
+    }
 
-.opportunity-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
+    .opportunity-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
 
-.opportunity-card img:hover {
-    opacity: 0.8;
-}
+    .opportunity-card img:hover {
+        opacity: 0.8;
+    }
 
-.card-body {
-    padding: 20px;
-}
+    .card-body {
+        padding: 20px;
+    }
 
-.card-body h2 {
-    font-size: 20px;
-    font-weight: 700;
-    margin: 10px 0;
-    color: #007bff;
-}
+    .card-body h2 {
+        font-size: 20px;
+        font-weight: 700;
+        margin: 10px 0;
+        color: #007bff;
+    }
 
-.card-body p {
-    font-size: 16px;
-    color: #555;
-    margin: 10px 0;
-}
+    .card-body p {
+        font-size: 16px;
+        color: #555;
+        margin: 10px 0;
+    }
 
-.card-body a.btn {
-    display: inline-block;
-    padding: 10px 20px;
-    border-radius: 5px;
-    background-color: #007bff;
-    color: #fff;
-    font-weight: 600;
-    text-decoration: none;
-    transition: background-color 0.3s, transform 0.3s;
-}
+    .card-body a.btn {
+        display: inline-block;
+        padding: 10px 20px;
+        border-radius: 5px;
+        background-color: #007bff;
+        color: #fff;
+        font-weight: 600;
+        text-decoration: none;
+        transition: background-color 0.3s, transform 0.3s;
+    }
 
-.card-body a.btn:hover {
-    background-color: #0056b3;
-    transform: scale(1.05);
-}
+    .card-body a.btn:hover {
+        background-color: #0056b3;
+        transform: scale(1.05);
+    }
 </style>
 
 <div class="hero">
