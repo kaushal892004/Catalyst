@@ -1,106 +1,76 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="section-header">
-    <h1>Learn</h1>
-    <p>Discover courses and resources to enhance your skills.</p>
+<div class="section-header text-center py-12 bg-gray-100 mb-8">
+    <h1 class="text-4xl font-bold text-gray-800">Learn</h1>
+    <p class="text-gray-600 mt-2">Discover courses and resources to enhance your skills.</p>
 </div>
 
-<div class="learning-resources">
+<div class="learning-resources w-full h-1/2 grid grid-cols-3 md:grid-cols-1 lg:grid-cols-3 gap-6 px-8">
     <!-- Example Learning Resource Card -->
-    <div class="learning-card">
+    <div
+        class="learning-card  bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transform transition duration-300 hover:-translate-y-2">
         <div class="learning-image">
-            <img src="{{ url_for('static', filename='images/python-course.jpg') }}" alt="Python for Data Science">
+            <img class="w-full h-48 object-fit" src="{{ url_for('static', filename='images/python-course.jpg') }}"
+                alt="Python for Data Science">
         </div>
-        <div class="learning-details">
-            <h2>Python for Data Science</h2>
-            <p>Platform: Coursera</p>
-            <p>Duration: 4 weeks</p>
-            <a href="#" class="btn">Enroll Now</a>
+        <div class="learning-details text-center p-6">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-3">Python for Data Science</h2>
+            <p class="text-sm text-gray-600">Platform: Coursera</p>
+            <p class="text-sm text-gray-600 mb-4">Duration: 4 weeks</p>
+            <a href="#"
+                class="btn bg-blue-500 text-white font-semibold py-2 px-4 rounded-md hover:bg-blue-600 transition duration-300">Enroll
+                Now</a>
         </div>
     </div>
 
-    <div class="learning-card">
+    <div
+        class="learning-card bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transform transition duration-300 hover:-translate-y-2">
         <div class="learning-image">
-            <img src="{{ url_for('static', filename='images/js-course.jpg') }}" alt="Advanced JavaScript">
+            <img class="w-full h-48 object-fit-cover" src="{{ url_for('static', filename='images/js-course.jpg') }}"
+                alt="Advanced JavaScript">
         </div>
-        <div class="learning-details">
-            <h2>Advanced JavaScript</h2>
-            <p>Platform: Udemy</p>
-            <p>Duration: 6 weeks</p>
-            <a href="#" class="btn">Enroll Now</a>
+        <div class="learning-details text-center p-6">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-3">Advanced JavaScript</h2>
+            <p class="text-sm text-gray-600">Platform: Udemy</p>
+            <p class="text-sm text-gray-600 mb-4">Duration: 6 weeks</p>
+            <a href="#"
+                class="btn bg-blue-500 text-white font-semibold py-2 px-4 rounded-md hover:bg-blue-600 transition duration-300">Enroll
+                Now</a>
         </div>
+
+    </div>
+    <div
+        class="learning-card bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transform transition duration-300 hover:-translate-y-2">
+        <div class="learning-image">
+            <img class="w-full h-48 object-fit-cover" src="{{ url_for('static', filename='images/python-course.jpg') }}"
+                alt="Advanced JavaScript">
+        </div>
+        <div class="learning-details text-center p-6">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-3">Advanced JavaScript</h2>
+            <p class="text-sm text-gray-600">Platform: Udemy</p>
+            <p class="text-sm text-gray-600 mb-4">Duration: 6 weeks</p>
+            <a href="#"
+                class="btn bg-blue-500 text-white font-semibold py-2 px-4 rounded-md hover:bg-blue-600 transition duration-300">Enroll
+                Now</a>
+        </div>
+    <div
+        class="learning-card bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transform transition duration-300 hover:-translate-y-2">
+        <div class="learning-image">
+            <img class="w-full h-48 object-fit-cover" src="{{ url_for('static', filename='images/python-course.jpg') }}"
+                alt="Advanced JavaScript">
+        </div>
+        <div class="learning-details text-center p-6">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-3">Advanced JavaScript</h2>
+            <p class="text-sm text-gray-600">Platform: Udemy</p>
+            <p class="text-sm text-gray-600 mb-4">Duration: 6 weeks</p>
+            <a href="#"
+                class="btn bg-blue-500 text-white font-semibold py-2 px-4 rounded-md hover:bg-blue-600 transition duration-300">Enroll
+                Now</a>
+        </div>
+
     </div>
 
-    <!-- Add more learning resource cards as needed -->
 </div>
 
-<style>
-    .section-header {
-        text-align: center;
-        padding: 50px 20px;
-        background-color: #f9f9f9;
-        margin-bottom: 20px;
-    }
-
-    .learning-resources {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 20px;
-        padding: 20px;
-    }
-
-    .learning-card {
-        background-color: #fff;
-        border: 1px solid #e0e0e0;
-        border-radius: 8px;
-        overflow: hidden;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        display: flex;
-        flex-direction: column;
-        transition: transform 0.3s;
-    }
-
-    .learning-card:hover {
-        transform: translateY(-5px);
-    }
-
-    .learning-image img {
-        width: 100%;
-        height: 150px;
-        object-fit: cover;
-    }
-
-    .learning-details {
-        padding: 20px;
-        text-align: center;
-    }
-
-    .learning-details h2 {
-        font-size: 20px;
-        margin-bottom: 10px;
-        color: #333;
-    }
-
-    .learning-details p {
-        font-size: 14px;
-        color: #777;
-        margin-bottom: 10px;
-    }
-
-    .btn {
-        display: inline-block;
-        padding: 10px 20px;
-        background-color: #008CFF;
-        color: #fff;
-        text-decoration: none;
-        border-radius: 5px;
-        font-weight: 600;
-        transition: background-color 0.3s;
-    }
-
-    .btn:hover {
-        background-color: #0056b3;
-    }
-</style>
 {% endblock %}
