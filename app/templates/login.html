@@ -1,205 +1,38 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-<style>
-    /* Internal CSS */
-    /* body {
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: rgba(31, 41, 55, 1); Optional background for the body
-        } */
-   /* Add this CSS */
-
-    .form-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: calc(100vh - [navbar height] - [footer height]);
-    }
-
-    .form-container {
-    display: flex;
-    justify-content: center;
-    width: 320px;
-    align-items: center;
-    flex-direction: column;
-    margin: 40px auto;
-    max-width: 400px;
-    padding: 2rem;
-    border-radius: 0.75rem;
-    background-color: rgba(17, 24, 39, 1);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    color: rgba(243, 244, 246, 1);
-    }
-
-/* Adjust the padding or margins as needed */
-        
-    /* .form-container {
-            width: 320px;
-            border-radius: 0.75rem;
-            background-color: rgba(17, 24, 39, 1);
-            padding: 2rem;
-            color: rgba(243, 244, 246, 1);
-    } */
-
-    .title {
-        text-align: center;
-        font-size: 1.5rem;
-        line-height: 2rem;
-        font-weight: 700;
-    }
-
-    .form {
-        margin-top: 1.5rem;
-        
-    }
-
-    .input-group {
-        margin-top: 0.25rem;
-        font-size: 0.875rem;
-        line-height: 1.25rem;
-    }
-
-    .input-group label {
-        display: block;
-        color: rgba(156, 163, 175, 1);
-        margin-bottom: 4px;
-    }
-
-    .input-group input {
-        width: 100%;
-        border-radius: 0.375rem;
-        border: 1px solid rgba(55, 65, 81, 1);
-        outline: 0;
-        background-color: rgba(17, 24, 39, 1);
-        padding: 0.75rem 1rem;
-        color: rgba(243, 244, 246, 1);
-    }
-
-    .input-group input:focus {
-        border-color: rgba(167, 139, 250);
-    }
-
-    .forgot {
-        display: flex;
-        justify-content: flex-end;
-        font-size: 0.75rem;
-        line-height: 1rem;
-        color: rgba(156, 163, 175,1);
-        margin: 8px 0 14px 0;
-    }
-
-    .forgot a,.signup a {
-        color: rgba(243, 244, 246, 1);
-        text-decoration: none;
-        font-size: 14px;
-    }
-
-    .forgot a:hover, .signup a:hover {
-        text-decoration: underline rgba(167, 139, 250, 1);
-    }
-
-    .sign {
-        display: block;
-        width: 100%;
-        background-color: rgba(167, 139, 250, 1);
-        padding: 0.75rem;
-        text-align: center;
-        color: rgba(17, 24, 39, 1);
-        border: none;
-        border-radius: 0.375rem;
-        font-weight: 600;
-    }
-
-    .social-message {
-        display: flex;
-        align-items: center;
-        padding-top: 1rem;
-    }
-
-    .line {
-        height: 1px;
-        flex: 1 1 0%;
-        background-color: rgba(55, 65, 81, 1);
-    }
-
-    .social-message .message {
-        padding-left: 0.75rem;
-        padding-right: 0.75rem;
-        font-size: 0.875rem;
-        line-height: 1.25rem;
-        color: rgba(156, 163, 175, 1);
-    }
-
-    .social-icons {
-        display: flex;
-        justify-content: center;
-    }
-
-    .social-icons .icon {
-        border-radius: 0.125rem;
-        padding: 0.75rem;
-        border: none;
-        background-color: transparent;
-        margin-left: 8px;
-    }
-
-    .social-icons .icon svg {
-        height: 1.25rem;
-        width: 1.25rem;
-        fill: #fff;
-    }
-
-    .signup {
-        text-align: center;
-        font-size: 0.75rem;
-        line-height: 1rem;
-        color: rgba(156, 163, 175, 1);
-    }
-</style>
-
-<div class="form-container">
-    <p class="title">Login</p>
-    <form class="form">
-        <div class="input-group">
-            <label for="username">Username</label>
-            <input type="text" name="username" id="username" placeholder="">
+<div class="w-full h-full flex justify-center">
+    <div class="bg-white  rounded-lg shadow-lg max-w-sm w-full p-6 m-9">
+        <h2 class="text-2xl font-bold text-center mb-6">Sign In With</h2>
+        <div class="flex justify-between mb-4">
+            <button class="bg-blue-600 text-white py-2 px-4 rounded-lg w-1/2 mr-2 flex items-center justify-center">
+                <i class="fab fa-facebook"></i> Facebook
+            </button>
+            <button class="bg-red-600 text-white py-2 px-4 rounded-lg w-1/2 ml-2 flex items-center justify-center">
+                <i class="fab fa-google"></i> Google
+            </button>
         </div>
-        <div class="input-group">
-            <label for="password">Password</label>
-            <input type="password" name="password" id="password" placeholder="">
-            <div class="forgot">
-                <a rel="noopener noreferrer" href="#">Forgot Password ?</a>
+        <form>
+            <div class="mb-4">
+                <label for="username" class="block mb-1 text-gray-600">Username</label>
+                <input type="text" id="username"
+                    class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500"
+                    placeholder="Enter your username">
             </div>
+            <div class="mb-4">
+                <label for="password" class="block mb-1 text-gray-600">Password</label>
+                <input type="password" id="password"
+                    class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500"
+                    placeholder="Enter your password">
+                <a href="#" class="text-sm text-blue-500 hover:underline mt-2 inline-block">Forgot password?</a>
+            </div>
+            <button class="bg-black text-white w-full py-2 rounded-lg font-bold hover:bg-gray-800">Sign In</button>
+        </form>
+        <div class="text-center mt-4">
+            <p class="text-sm text-gray-500">Don't have an account? <a href="#"
+                    class="text-blue-500 hover:underline">Sign up now</a></p>
         </div>
-        <button class="sign">Sign in</button>
-    </form>
-    <div class="social-message">
-        <div class="line"></div>
-        <p class="message">Login with social accounts</p>
-        <div class="line"></div>
     </div>
-    <div class="social-icons">
-        <button aria-label="Log in with Google" class="icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="w-5 h-5 fill-current">
-                <path d="M16.318 13.714v5.484h9.078c-0.37 2.354-2.745 6.901-9.078 6.901-5.458 0-9.917-4.521-9.917-10.099s4.458-10.099 9.917-10.099c3.109 0 5.193 1.318 6.38 2.464l4.339-4.182c-2.786-2.599-6.396-4.182-10.719-4.182-8.844 0-16 7.151-16 16s7.156 16 16 16c9.234 0 15.365-6.49 15.365-15.635 0-1.052-0.115-1.854-0.255-2.651z"></path>
-            </svg>
-        </button>
-        <button aria-label="Log in with Twitter" class="icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="w-5 h-5 fill-current">
-                <path d="M31.937 6.093c-1.177 0.516-2.437 0.871-3.765 1.032 1.355-0.813 2.391-2.099 2.885-3.631-1.271 0.74-2.677 1.276-4.172 1.579-1.192-1.276-2.896-2.079-4.787-2.079-3.625 0-6.563 2.937-6.563 6.557 0 0.521 0.063 1.021 0.172 1.495-5.453-0.255-10.287-2.875-13.52-6.833-0.568 0.964-0.891 2.084-0.891 3.303 0 2.281 1.161 4.281 2.916 5.457-1.073-0.031-2.083-0.328-2.968-0.817v0.079c0 3.181 2.26 5.833 5.26 6.437-0.547 0.145-1.131 0.229-1.724 0.229-0.421 0-0.823-0.041-1.224-0.115 0.844 2.604 3.26 4.5 6.14 4.557-2.239 1.755-5.077 2.801-8.135 2.801-0.521 0-1.041-0.025-1.563-0.088 2.917 1.86 6.36 2.948 10.079 2.948 12.067 0 18.661-9.995 18.661-18.651 0-0.276 0-0.557-0.021-0.839 1.287-0.917 2.401-2.079 3.281-3.396z"></path>
-            </svg>
-        </button>
-        <button aria-label="Log in with GitHub" class="icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="w-5 h-5 fill-current">
-                <path d="M16 0.396c-8.839 0-16 7.167-16 16 0 7.073 4.584 13.068 10.937 15.183 0.803 0.151 1.093-0.344 1.093-0.772 0-0.38-0.021-1.646-0.021-2.995-4.464 0.974-5.401-1.089-5.745-2.088-0.181-0.468-0.969-2.088-1.66-2.516-0.573-0.308-1.396-1.063-0.021-1.083 1.292-0.021 2.219 1.188 2.525 1.677 1.479 2.495 3.839 1.781 4.776 1.359 0.151-1.063 0.573-1.781 1.042-2.193-3.553-0.401-7.292-1.781-7.292-7.917 0-1.751 0.625-3.183 1.646-4.307-0.161-0.401-0.724-2.031 0.181-4.244 0 0 1.344-0.42 4.401 1.645 1.28-0.36 2.645-0.547 4.005-0.547 1.359 0 2.724 0.188 4.005 0.547 3.057-2.068 4.401-1.645 4.401-1.645 0.901 2.213 0.344 3.844 0.181 4.244 1.021 1.125 1.646 2.557 1.646 4.307 0 6.156-3.755 7.516-7.324 7.911 0.599 0.516 1.141 1.5 1.141 3.052 0 2.193-0.021 3.964-0.021 4.505 0 0.421 0.292 0.932 1.099 0.76 6.339-2.115 10.917-8.109 10.917-15.183 0-8.833-7.161-15.604-16-15.604z"></path>
-            </svg>
-        </button>
-    </div>
-    <p class="signup">Don't have an account? <a rel="noopener noreferrer" href="#">Sign up</a></p>
 </div>
+
 {% endblock %}
