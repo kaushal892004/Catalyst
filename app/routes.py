@@ -21,6 +21,10 @@ def internships():
 def jobs():
     return render_template('jobs.html')
 
+@main.route('/skillgap')
+def skill():
+    return render_template('skillgap.html')
+
 @main.route('/learn')
 def learn():
     # Replace with actual logic to get learning resources
