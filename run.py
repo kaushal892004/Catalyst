@@ -1,4 +1,4 @@
-from app import create_app
+from app import create_app  # Correct import for the create_app function
 
 app = create_app()
 

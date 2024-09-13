@@ -2,37 +2,27 @@
 
 {% block content %}
 <div class="w-full h-full flex justify-center">
-    <div class="bg-white  rounded-lg shadow-lg max-w-sm w-full p-6 m-9">
-        <h2 class="text-2xl font-bold text-center mb-6">Sign In With</h2>
-        <div class="flex justify-between mb-4">
-            <button class="bg-blue-600 text-white py-2 px-4 rounded-lg w-1/2 mr-2 flex items-center justify-center">
-                <i class="fab fa-facebook"></i> Facebook
-            </button>
-            <button class="bg-red-600 text-white py-2 px-4 rounded-lg w-1/2 ml-2 flex items-center justify-center">
-                <i class="fab fa-google"></i> Google
-            </button>
-        </div>
-        <form>
+    <div class="bg-white rounded-lg shadow-lg max-w-sm w-full p-6 m-9">
+        <h2 class="text-2xl font-bold text-center mb-6">Sign In</h2>
+        <form method="POST" action="{{ url_for('main.login') }}">
             <div class="mb-4">
-                <label for="username" class="block mb-1 text-gray-600">Username</label>
-                <input type="text" id="username"
+                <label for="email" class="block mb-1 text-gray-600">Email</label>
+                <input type="email" id="email" name="email"
                     class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500"
-                    placeholder="Enter your username">
+                    placeholder="Enter your email" required>
             </div>
             <div class="mb-4">
                 <label for="password" class="block mb-1 text-gray-600">Password</label>
-                <input type="password" id="password"
+                <input type="password" id="password" name="password"
                     class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500"
-                    placeholder="Enter your password">
-                <a href="#" class="text-sm text-blue-500 hover:underline mt-2 inline-block">Forgot password?</a>
+                    placeholder="Enter your password" required>
             </div>
-            <button class="bg-black text-white w-full py-2 rounded-lg font-bold hover:bg-gray-800">Sign In</button>
+            <button type="submit" class="bg-black text-white w-full py-2 rounded-lg font-bold hover:bg-gray-800">Sign In</button>
         </form>
         <div class="text-center mt-4">
-            <p class="text-sm text-gray-500">Don't have an account? <a href="#"
+            <p class="text-sm text-gray-500">Don't have an account? <a href="{{ url_for('main.signup') }}"
                     class="text-blue-500 hover:underline">Sign up now</a></p>
         </div>
     </div>
 </div>
-
 {% endblock %}
