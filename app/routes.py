@@ -4,78 +4,6 @@ from bson.objectid import ObjectId  # Ensure you have this import for ObjectId
 
 main = Blueprint('main', __name__)
 
-@main.route('/')
-def landing_page():
-    return render_template('landing_page.html')
-
-@main.route('/dashboard')
-def dashboard():
-    user = {'username': 'JohnDoe'}
-    return render_template('dashboard.html', user=user)
-
-@main.route('/internships')
-def internships():
-    return render_template('internships.html')
-
-@main.route('/jobs')
-def jobs():
-    return render_template('jobs.html')
-
-@main.route('/skillgap')
-def skillgap():
-    return render_template('skillgap.html')
-
-@main.route('/learn')
-def learn():
-    return render_template('learn.html')
-
-@main.route('/practice')
-def practice():
-    return render_template('practice.html')
-
-@main.route('/compete')
-def compete():
-    return render_template('compete.html')
-
-@main.route('/mentorship')
-def mentorship():
-    return render_template('mentorship.html')
-
-@main.route('/profile', methods=['GET', 'POST'])
-@jwt_required()
-def user_profile():
-    user_id = get_jwt_identity()
-    user = current_app.mongo.db.users.find_one({'_id': ObjectId(user_id)})
-    
-    if request.method == 'POST':
-        profile_info = request.form.get('profile_info')
-        current_app.mongo.db.users.update_one(
-            {'_id': ObjectId(user_id)},
-            {'$set': {'profile_info': profile_info}}
-        )
-        return redirect(url_for('main.user_profile'))
-    
-    return render_template('profile.html', user=user)
-
-@main.route('/login', methods=['GET', 'POST'])
-def login():
-    if request.method == 'POST':
-        email = request.form['email']
-        password = request.form['password']
-
-        user = current_app.mongo.db.users.find_one({'email': email})
-
-        if user and current_app.bcrypt.check_password_hash(user['password'], password):
-            access_token = create_access_token(identity=str(user['_id']))
-            response = redirect(url_for('main.dashboard'))
-            response.set_cookie('access_token', access_token)
-            return response
-        
-        flash('Invalid email or password')
-        return redirect(url_for('main.login'))
-
-    return render_template('login.html')
-
 @main.route('/signup', methods=['GET', 'POST'])
 def signup():
     if request.method == 'POST':
@@ -102,11 +30,112 @@ def signup():
     
     return render_template('signup.html')
 
+@main.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        email = request.form['email']
+        password = request.form['password']
+
+        user = current_app.mongo.db.users.find_one({'email': email})
+
+        if user and current_app.bcrypt.check_password_hash(user['password'], password):
+            access_token = create_access_token(identity=str(user['_id']))
+            response = redirect(url_for('main.dashboard'))
+            response.set_cookie('access_token', access_token)
+            return response
+        
+        flash('Invalid email or password')
+        return redirect(url_for('main.login'))
+
+    return render_template('login.html')
+
+@main.route('/profile', methods=['GET', 'POST'])
+@jwt_required()
+def user_profile():
+    user_id = get_jwt_identity()
+    user = current_app.mongo.db.users.find_one({'_id': ObjectId(user_id)})
+    
+    if request.method == 'POST':
+        profile_info = request.form.get('profile_info')
+        current_app.mongo.db.users.update_one(
+            {'_id': ObjectId(user_id)},
+            {'$set': {'profile_info': profile_info}}
+        )
+        return redirect(url_for('main.user_profile'))
+    
+    return render_template('profile.html', user=user)
+
+@main.route('/')
+def landing_page():
+    return render_template('landing_page.html')
+
+@main.route('/dashboard')
+@jwt_required()
+def dashboard():
+    user_id = get_jwt_identity()
+    user = current_app.mongo.db.users.find_one({'_id': ObjectId(user_id)})
+    return render_template('dashboard.html', user=user)
+
+@main.route('/internships')
+@jwt_required()
+def internships():
+    return render_template('internships.html')
+
+@main.route('/jobs')
+@jwt_required()
+def jobs():
+    return render_template('jobs.html')
+
+@main.route('/skillgap')
+@jwt_required()
+def skillgap():
+    return render_template('skillgap.html')
+
+@main.route('/learn')
+@jwt_required()
+def learn():
+    return render_template('learn.html')
+
+@main.route('/practice')
+@jwt_required()
+def practice():
+    return render_template('practice.html')
+
+@main.route('/compete')
+@jwt_required()
+def compete():
+    return render_template('compete.html')
+
+@main.route('/mentorship')
+@jwt_required()
+def mentorship():
+    return render_template('mentorship.html')
+
+@main.route('/saved_opportunities')
+@jwt_required()
+def saved_opportunities():
+    return render_template('saved_opportunities.html')
+
+@main.route('/applications')
+@jwt_required()
+def applications():
+    return render_template('applications.html')
+
+@main.route('/learning_progress')
+@jwt_required()
+def learning_progress():
+    return render_template('learning_progress.html')
+
+@main.route('/competitions')
+@jwt_required()
+def competitions():
+    return render_template('competitions.html')
+
 @main.route('/analyze_skills', methods=['GET', 'POST'])
 @jwt_required()
 def analyze_skills():
     user_id = get_jwt_identity()
-    user = {'username': 'JohnDoe'}
+    user = current_app.mongo.db.users.find_one({'_id': ObjectId(user_id)})
 
     skills = request.form.get('skills').split(", ")
 
@@ -126,28 +155,3 @@ def analyze_skills():
         "gap_analysis": missing_skills,
         "recommendations": recommendations
     })
-
-@main.route('/saved_opportunities')
-@jwt_required()
-def saved_opportunities():
-    # Add your logic here
-    return render_template('saved_opportunities.html')
-
-@main.route('/applications')
-@jwt_required()
-def applications():
-    # Add your logic here
-    return render_template('applications.html')
-
-@main.route('/learning_progress')
-@jwt_required()
-def learning_progress():
-    # Add your logic here
-    return render_template('learning_progress.html')
-
-@main.route('/competitions')
-@jwt_required()
-def competitions():
-    # Add your logic here
-    return render_template('competitions.html')
-
