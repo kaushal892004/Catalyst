@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="section-header text-center py-12 bg-gray-100 mb-8">
+    <h1 class="text-4xl font-bold text-gray-800">Learn</h1>
+    <p class="text-gray-600 mt-2">Discover courses and resources to enhance your skills.</p>
+</div>
+
+<div class="learning-resources w-full h-1/2 grid grid-cols-3 md:grid-cols-1 lg:grid-cols-3 gap-6 px-8">
+    <!-- Example Learning Resource Card -->
+    <div
+        class="learning-card  bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transform transition duration-300 hover:-translate-y-2">
+        <div class="learning-image">
+            <img class="w-full h-48 object-fit" src="{{ url_for('static', filename='images/python-course.jpg') }}"
+                alt="Python for Data Science">
+        </div>
+        <div class="learning-details text-center p-6">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-3">Python for Data Science</h2>
+            <p class="text-sm text-gray-600">Platform: Coursera</p>
+            <p class="text-sm text-gray-600 mb-4">Duration: 4 weeks</p>
+            <a href="#"
+                class="btn bg-blue-500 text-white font-semibold py-2 px-4 rounded-md hover:bg-blue-600 transition duration-300">Enroll
+                Now</a>
+        </div>
+    </div>
+
+    <div
+        class="learning-card bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transform transition duration-300 hover:-translate-y-2">
+        <div class="learning-image">
+            <img class="w-full h-48 object-fit-cover" src="{{ url_for('static', filename='images/js-course.jpg') }}"
+                alt="Advanced JavaScript">
+        </div>
+        <div class="learning-details text-center p-6">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-3">Advanced JavaScript</h2>
+            <p class="text-sm text-gray-600">Platform: Udemy</p>
+            <p class="text-sm text-gray-600 mb-4">Duration: 6 weeks</p>
+            <a href="#"
+                class="btn bg-blue-500 text-white font-semibold py-2 px-4 rounded-md hover:bg-blue-600 transition duration-300">Enroll
+                Now</a>
+        </div>
+
+    </div>
+    <div
+        class="learning-card bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transform transition duration-300 hover:-translate-y-2">
+        <div class="learning-image">
+            <img class="w-full h-48 object-fit-cover" src="{{ url_for('static', filename='images/python-course.jpg') }}"
+                alt="Advanced JavaScript">
+        </div>
+        <div class="learning-details text-center p-6">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-3">Advanced JavaScript</h2>
+            <p class="text-sm text-gray-600">Platform: Udemy</p>
+            <p class="text-sm text-gray-600 mb-4">Duration: 6 weeks</p>
+            <a href="#"
+                class="btn bg-blue-500 text-white font-semibold py-2 px-4 rounded-md hover:bg-blue-600 transition duration-300">Enroll
+                Now</a>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

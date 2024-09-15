@@ -1,0 +1,149 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="profile-card">
+    <div class="profile-header">
+        <img src="https://via.placeholder.com/100" alt="Profile Picture" class="profile-pic">
+        <h2>John Doe</h2>
+        <p>Comprehensive Employment Platform</p>
+    </div>
+    <div class="profile-content">
+        <label for="fullName">Full Name</label>
+        <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" value="John Doe">
+        
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" value="john.doe@example.com">
+
+        <label for="location">Location</label>
+        <input type="text" id="location" name="location" placeholder="Enter your location" value="New York, USA">
+
+        <label for="desiredRole">Desired Job Role</label>
+        <input type="text" id="desiredRole" name="desiredRole" placeholder="e.g., Software Developer" value="Full-Stack Developer">
+
+        <label for="bio">Short Bio</label>
+        <textarea id="bio" name="bio" placeholder="Tell us a little about yourself">Passionate developer with 5+ years of experience in building dynamic web applications.</textarea>
+
+        <label for="skills">Skills</label>
+        <textarea id="skills" name="skills" placeholder="List your skills separated by commas">JavaScript, Python, React, Django</textarea>
+
+        <label for="experience">Experience</label>
+        <textarea id="experience" name="experience" placeholder="Describe your experience">Worked at XYZ Corp as a Lead Developer, spearheading multiple projects with cross-functional teams.</textarea>
+    </div>
+    <div class="profile-footer">
+        <button type="submit">Save Profile</button>
+    </div>
+</div>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+        /* display: flex; */
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        transition: background-color 0.5s ease-in-out;
+    }
+
+    .profile-card {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        width: 450px;
+        padding: 20px;
+        box-sizing: border-box;
+        margin: 0 auto;
+        transform: scale(0.9);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .profile-card:hover {
+        transform: scale(1);
+    }
+
+    .profile-header {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .profile-pic {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: box-shadow 0.3s ease-in-out;
+    }
+
+    .profile-pic:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .profile-header h2 {
+        margin: 10px 0 5px;
+        font-size: 24px;
+        color: #333;
+    }
+
+    .profile-header p {
+        margin: 0;
+        color: #666;
+        font-size: 14px;
+    }
+
+    .profile-content {
+        margin-bottom: 20px;
+    }
+
+    .profile-content label {
+        display: block;
+        margin-bottom: 5px;
+        color: #333;
+    }
+
+    .profile-content input[type="text"],
+    .profile-content input[type="email"],
+    .profile-content textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        border: 1px solid #ddd;
+        box-sizing: border-box;
+        transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    }
+
+    .profile-content input[type="text"]:focus,
+    .profile-content input[type="email"]:focus,
+    .profile-content textarea:focus {
+        border-color: #28a745;
+        box-shadow: 0 0 5px rgba(40, 167, 69, 0.5);
+    }
+
+    .profile-content textarea {
+        resize: vertical;
+        height: 80px;
+    }
+
+    .profile-footer {
+        text-align: center;
+    }
+
+    .profile-footer button {
+        background-color: #28a745;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+    }
+
+    .profile-footer button:hover {
+        background-color: #218838;
+        transform: translateY(-3px);
+    }
+</style>
+{% endblock %}
