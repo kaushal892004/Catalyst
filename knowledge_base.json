@@ -1,0 +1,540 @@
+{
+    "questions": [
+        {
+            "question": "What are your hours?",
+            "response": "We are open from 9 AM to 5 PM, Monday through Friday."
+        },
+        {
+            "question": "hello",
+            "response": "hello how can i help you?"
+        },
+        {
+            "question": "Where are you located?",
+            "response": "We are located at 123 Main Street, Anytown, USA."
+        },
+        {
+            "question": "How can I contact support?",
+            "response": "You can contact support via email at support@example.com."
+        },
+        {
+            "question": "What is Catalyst?",
+            "response": "Catalyst is a comprehensive employment platform designed to help job seekers with skill assessments, job recommendations, and training opportunities."
+        },
+        {
+            "question": "How can Catalyst help me in my job search?",
+            "response": "Catalyst offers personalized job recommendations, skill gap analysis, and access to relevant training programs to enhance your job search."
+        },
+        {
+            "question": "How do I sign up for Catalyst?",
+            "response": "You can sign up for Catalyst by visiting the registration page on our website and filling out the required information."
+        },
+        {
+            "question": "What features does Catalyst offer?",
+            "response": "Catalyst offers features such as skill gap analysis, AI-powered job recommendations, adaptive learning pathways, real-time job market insights, and a resume wizard."
+        },
+        {
+            "question": "How does the skill gap analysis work?",
+            "response": "The skill gap analysis evaluates your current skills against job requirements and identifies areas where you need improvement."
+        },
+        {
+            "question": "Can I update my profile information?",
+            "response": "Yes, you can update your profile information by accessing the profile page after logging into your account."
+        },
+        {
+            "question": "What types of jobs does Catalyst recommend?",
+            "response": "Catalyst recommends jobs based on your skills, experience, and desired roles, tailored to match your career goals."
+        },
+        {
+            "question": "How do I access training programs through Catalyst?",
+            "response": "You can access training programs through the learning section of Catalyst, where we recommend relevant online courses and workshops."
+        },
+        {
+            "question": "Can I track my progress on Catalyst?",
+            "response": "Yes, you can track your progress through the dashboard, where you can see your skill development, job applications, and training achievements."
+        },
+        {
+            "question": "What is the resume wizard feature?",
+            "response": "The resume wizard helps you create a professional resume by guiding you through the process and providing tips for optimization."
+        },
+        {
+            "question": "How can I get in touch with support?",
+            "response": "You can contact our support team through the contact page on our website or via email at support@catalyst.com."
+        },
+        {
+            "question": "Is Catalyst free to use?",
+            "response": "Catalyst offers both free and premium features. Some advanced tools and recommendations may require a subscription."
+        },
+        {
+            "question": "How do I reset my password?",
+            "response": "You can reset your password by using the 'Forgot Password' option on the login page and following the instructions sent to your email."
+        },
+        {
+            "question": "What are adaptive learning pathways?",
+            "response": "Adaptive learning pathways provide personalized learning recommendations based on your skill gaps and career goals."
+        },
+        {
+            "question": "How can I earn badges on Catalyst?",
+            "response": "You can earn badges by completing certain milestones, such as achieving high scores on skill assessments or completing training programs."
+        },
+        {
+            "question": "Can I connect my social media profiles to Catalyst?",
+            "response": "Yes, you can connect your LinkedIn profile to Catalyst to import your work experience and skills."
+        },
+        {
+            "question": "How do I apply for jobs through Catalyst?",
+            "response": "You can apply for jobs by browsing the job listings on Catalyst and submitting your application through the platform."
+        },
+        {
+            "question": "What is the community support feature?",
+            "response": "The community support feature allows you to connect with other job seekers and professionals to share advice and support."
+        },
+        {
+            "question": "How does Catalyst use AI for job recommendations?",
+            "response": "Catalyst uses AI to analyze your skills, experience, and preferences to suggest job opportunities that best match your profile."
+        },
+        {
+            "question": "What should I include in my profile?",
+            "response": "Your profile should include your full name, email, location, desired role, bio, skills, and experience."
+        },
+        {
+            "question": "Can I upload my resume to Catalyst?",
+            "response": "Yes, you can upload your resume to Catalyst, which will help us provide more accurate job recommendations."
+        },
+        {
+            "question": "How do I get notified about new job opportunities?",
+            "response": "You can set up job alerts to receive notifications about new job opportunities that match your criteria."
+        },
+        {
+            "question": "What are the benefits of using Catalyst for career growth?",
+            "response": "Catalyst helps you identify skill gaps, access relevant training, get personalized job recommendations, and track your career progress."
+        },
+        {
+            "question": "How can I provide feedback on Catalyst?",
+            "response": "You can provide feedback through the feedback form on our website or contact us directly at feedback@catalyst.com."
+        },
+        {
+            "question": "What is the best way to use the skill gap analysis tool?",
+            "response": "To use the skill gap analysis tool effectively, input your current skills and desired job role, and review the identified gaps to improve your skills accordingly."
+        },
+        {
+            "question": "How do I update my skills on Catalyst?",
+            "response": "You can update your skills by editing your profile and adding or removing skills as needed."
+        },
+        {
+            "question": "What if I don't find a job that fits my skills?",
+            "response": "Catalyst will provide you with training recommendations to help you develop new skills and increase your chances of finding a suitable job."
+        },
+        {
+            "question": "How can I improve my chances of getting hired?",
+            "response": "Improve your chances by updating your skills, tailoring your resume, applying for relevant jobs, and participating in training programs."
+        },
+        {
+            "question": "Does Catalyst offer interview preparation?",
+            "response": "Catalyst provides resources and tips for interview preparation, but does not offer direct interview coaching."
+        },
+        {
+            "question": "Can I save job listings on Catalyst?",
+            "response": "Yes, you can save job listings to your favorites for easy access and future reference."
+        },
+        {
+            "question": "How do I customize my job search preferences?",
+            "response": "You can customize your job search preferences by adjusting your profile settings and specifying your job preferences."
+        },
+        {
+            "question": "What are the most common skills employers look for?",
+            "response": "Common skills include communication, problem-solving, teamwork, and technical skills related to the job role."
+        },
+        {
+            "question": "How often is the job market data updated on Catalyst?",
+            "response": "The job market data is updated regularly to provide the most current and relevant information."
+        },
+        {
+            "question": "What types of training programs are available?",
+            "response": "Training programs include online courses, workshops, and certification programs tailored to various skill levels and industries."
+        },
+        {
+            "question": "Can I set career goals on Catalyst?",
+            "response": "Yes, you can set and track your career goals through your profile dashboard."
+        },
+        {
+            "question": "How do I know if a job is right for me?",
+            "response": "Consider factors such as job requirements, company culture, location, and how well the job aligns with your career goals."
+        },
+        {
+            "question": "What is a competency diagnostic tool?",
+            "response": "A competency diagnostic tool assesses your skills and competencies against job requirements to identify areas for improvement."
+        },
+        {
+            "question": "How does Catalyst handle my personal data?",
+            "response": "Catalyst follows strict data protection policies to ensure your personal data is secure and used only for the intended purposes."
+        },
+        {
+            "question": "Can I request a demo of Catalyst?",
+            "response": "Yes, you can request a demo by contacting our sales team through the contact form on our website."
+        },
+        {
+            "question": "What is the role of AI in Catalyst?",
+            "response": "AI helps analyze user profiles, predict skill gaps, and provide personalized job and training recommendations."
+        },
+        {
+            "question": "How do I get certified through Catalyst?",
+            "response": "You can get certified by completing recommended training programs and passing the associated assessments."
+        },
+        {
+            "question": "Can I integrate Catalyst with other job platforms?",
+            "response": "Currently, Catalyst does not support direct integration with other job platforms, but we are working on future integrations."
+        },
+        {
+            "question": "What should I do if I encounter technical issues on Catalyst?",
+            "response": "Report technical issues through the support page on our website or contact our technical support team for assistance."
+        },
+        {
+            "question": "How can I find out about new features on Catalyst?",
+            "response": "Stay updated on new features by subscribing to our newsletter or following us on social media."
+        },
+        {
+            "question": "What is the resume wizard?",
+            "response": "The resume wizard is a tool that guides you in creating a professional resume by providing templates and tips."
+        },
+        {
+            "question": "Can I track the status of my job applications?",
+            "response": "Yes, you can track the status of your job applications through your profile dashboard."
+        },
+        {
+            "question": "How do I know if my skills are up to date?",
+            "response": "Regularly compare your skills against current job requirements and update your profile accordingly."
+        },
+        {
+            "question": "What are the best practices for writing a resume?",
+            "response": "Focus on clarity, relevance, and professionalism. Highlight your achievements, use action verbs, and tailor your resume to the job you're applying for."
+        },
+        {
+            "question": "Can Catalyst help with career transitions?",
+            "response": "Yes, Catalyst offers tools and resources to support career transitions, including skill assessments and job recommendations."
+        },
+        {
+            "question": "What is the role of the community support feature?",
+            "response": "The community support feature connects you with other users for sharing experiences, advice, and support in your career journey."
+        },
+        {
+            "question": "How can I improve my profile visibility?",
+            "response": "Enhance your profile visibility by completing all sections, showcasing your skills and achievements, and keeping your profile updated."
+        },
+        {
+            "question": "What types of questions can I ask the chatbot?",
+            "response": "You can ask about job search tips, career advice, skill development, training programs, and Catalyst features."
+        },
+        {
+            "question": "How does Catalyst determine job recommendations?",
+            "response": "Job recommendations are based on your skills, experience, and preferences, analyzed through our AI algorithms."
+        },
+        {
+            "question": "Can I access Catalyst on mobile devices?",
+            "response": "Yes, Catalyst is accessible on mobile devices through our responsive web design."
+        },
+        {
+            "question": "What should I do if I forget my username?",
+            "response": "You can recover your username by using the 'Forgot Username' option on the login page and following the instructions."
+        },
+        {
+            "question": "Can I edit or delete job applications on Catalyst?",
+            "response": "Currently, you cannot edit or delete job applications directly on Catalyst. Contact support for assistance with application issues."
+        },
+        {
+            "question": "What is the importance of skill assessments?",
+            "response": "Skill assessments help identify your strengths and weaknesses, guiding you in your career development and job search."
+        },
+        {
+            "question": "How do I find relevant training programs?",
+            "response": "Relevant training programs are recommended based on your skill gaps and career goals, as assessed by Catalyst."
+        },
+        {
+            "question": "Can I share my profile with potential employers?",
+            "response": "Yes, you can share your profile with potential employers by providing them with your profile link or resume."
+        },
+        {
+            "question": "How can I give feedback about Catalyst?",
+            "response": "Provide feedback through our feedback form on the website or contact us via email."
+        },
+        {
+            "question": "What if I need help with using Catalyst features?",
+            "response": "You can find help with using features in our help section or contact our support team for assistance."
+        },
+        {
+            "question": "Can I see job market trends on Catalyst?",
+            "response": "Yes, Catalyst provides insights into job market trends to help you understand the demand for different skills and roles."
+        },
+        {
+            "question": "What are the benefits of personalized job recommendations?",
+            "response": "Personalized job recommendations help you find roles that closely match your skills, experience, and career goals, increasing your chances of success."
+        },
+        {
+            "question": "How can I improve my skills based on the gap analysis?",
+            "response": "Focus on the skills identified in the gap analysis by enrolling in relevant training programs and practicing those skills."
+        },
+        {
+            "question": "How often should I update my Catalyst profile?",
+            "response": "Update your profile regularly to reflect new skills, experiences, and achievements to keep it accurate and relevant."
+        },
+        {
+            "question": "Can I integrate my LinkedIn profile with Catalyst?",
+            "response": "Yes, you can link your LinkedIn profile to Catalyst to import your work history and skills."
+        },
+        {
+            "question": "What is the process for earning certifications?",
+            "response": "Earn certifications by completing training programs and passing the associated assessments on Catalyst."
+        },
+        {
+            "question": "How can I use the resume wizard effectively?",
+            "response": "Use the resume wizard to create a well-structured resume by following its guidance on formatting, content, and best practices."
+        },
+        {
+            "question": "What should I do if I can't find a specific job role?",
+            "response": "If you can\u2019t find a specific job role, try broadening your search criteria or reach out to support for additional assistance."
+        },
+        {
+            "question": "Can I export my profile data from Catalyst?",
+            "response": "Currently, exporting profile data is not supported, but you can copy and save the information manually."
+        },
+        {
+            "question": "What are the most in-demand skills in the job market?",
+            "response": "In-demand skills include technical skills like programming, data analysis, and soft skills like communication and problem-solving."
+        },
+        {
+            "question": "How do I receive job alerts from Catalyst?",
+            "response": "Set up job alerts in your profile settings to receive notifications about job opportunities that match your criteria."
+        },
+        {
+            "question": "How can I connect with other professionals through Catalyst?",
+            "response": "Connect with other professionals through the community support feature and networking events organized by Catalyst."
+        },
+        {
+            "question": "What are the key features of the Catalyst dashboard?",
+            "response": "The dashboard displays your profile information, skill progress, job applications, training achievements, and personalized recommendations."
+        },
+        {
+            "question": "Can I customize the job search filters?",
+            "response": "Yes, you can customize job search filters based on criteria such as location, industry, experience level, and job type."
+        },
+        {
+            "question": "How do I set career goals on Catalyst?",
+            "response": "Set career goals through the goals section on your profile, where you can define and track your objectives."
+        },
+        {
+            "question": "How can I improve my resume with the resume wizard?",
+            "response": "The resume wizard provides tips and templates to enhance your resume, ensuring it highlights your skills and achievements effectively."
+        },
+        {
+            "question": "How does Catalyst ensure the accuracy of job market insights?",
+            "response": "Catalyst ensures accuracy by sourcing data from reputable job market analysis and regularly updating trends and statistics."
+        },
+        {
+            "question": "What should I do if I encounter issues with the chatbot?",
+            "response": "Report issues with the chatbot through the support page or contact us for technical assistance."
+        },
+        {
+            "question": "Can I access Catalyst training programs offline?",
+            "response": "Training programs on Catalyst are primarily online, but some courses may offer offline materials for download."
+        },
+        {
+            "question": "How do I know which training program is right for me?",
+            "response": "Catalyst recommends training programs based on your skill gaps and career goals, tailored to your needs."
+        },
+        {
+            "question": "Can I track my job application status on Catalyst?",
+            "response": "Yes, you can track your job application status through your profile dashboard."
+        },
+        {
+            "question": "How can I contact other users on Catalyst?",
+            "response": "You can contact other users through the community support feature or by connecting via LinkedIn."
+        },
+        {
+            "question": "What kind of support can I get from Catalyst?",
+            "response": "Catalyst offers support for technical issues, career advice, feature usage, and general inquiries through our support team."
+        },
+        {
+            "question": "Can I see feedback from other users on Catalyst?",
+            "response": "Currently, feedback from other users is not visible, but you can share your experiences through our feedback channels."
+        },
+        {
+            "question": "What is the best way to prepare for a job interview?",
+            "response": "Prepare for a job interview by researching the company, practicing common interview questions, and reviewing your resume."
+        },
+        {
+            "question": "Can Catalyst help with remote job opportunities?",
+            "response": "Yes, Catalyst includes job listings for both in-office and remote opportunities based on your preferences."
+        },
+        {
+            "question": "How do I use the chat feature on Catalyst?",
+            "response": "Use the chat feature by typing your questions and receiving responses directly from our chatbot."
+        },
+        {
+            "question": "What are the benefits of connecting my LinkedIn profile?",
+            "response": "Connecting your LinkedIn profile allows Catalyst to import your professional information and provide more accurate recommendations."
+        },
+        {
+            "question": "Can I provide suggestions for new features?",
+            "response": "Yes, you can provide suggestions for new features through our feedback form or contact us directly."
+        },
+        {
+            "question": "How do I find training programs for advanced skills?",
+            "response": "Find advanced training programs by exploring the learning section and filtering by skill level and course type."
+        },
+        {
+            "question": "What is the importance of setting career goals?",
+            "response": "Setting career goals helps you stay focused, measure progress, and achieve your professional aspirations."
+        },
+        {
+            "question": "How can I enhance my profile visibility on Catalyst?",
+            "response": "Enhance your profile visibility by completing all sections, showcasing achievements, and keeping your profile up-to-date."
+        },
+        {
+            "question": "Can Catalyst help with freelance job opportunities?",
+            "response": "Yes, Catalyst includes freelance job listings and opportunities based on your skills and preferences."
+        },
+        {
+            "question": "How can I participate in Catalyst networking events?",
+            "response": "Participate in networking events by checking the events section on Catalyst and registering for upcoming events."
+        },
+        {
+            "question": "What should I do if I encounter a technical issue on Catalyst?",
+            "response": "Report technical issues through our support page or contact our technical support team for assistance."
+        },
+        {
+            "question": "How does Catalyst support skill development?",
+            "response": "Catalyst supports skill development through assessments, personalized recommendations, and access to relevant training programs."
+        },
+        {
+            "question": "Can I customize my job search preferences?",
+            "response": "Yes, you can customize job search preferences by adjusting filters and settings to match your career goals."
+        },
+        {
+            "question": "What are the features of the AI-Powered Recommendation System?",
+            "response": "The AI-Powered Recommendation System provides personalized job and training recommendations based on your skills and career goals."
+        },
+        {
+            "question": "How do I use the resume wizard effectively?",
+            "response": "The resume wizard guides you through creating a professional resume by offering templates and suggestions for improvement."
+        },
+        {
+            "question": "What should I include in my profile summary?",
+            "response": "Include a brief overview of your skills, experience, and career goals in your profile summary to highlight your qualifications."
+        },
+        {
+            "question": "How can I leverage Catalyst for career growth?",
+            "response": "Leverage Catalyst by using its features for skill assessment, job recommendations, training programs, and networking opportunities."
+        },
+        {
+            "question": "What is the purpose of the skill gap analysis?",
+            "response": "The skill gap analysis identifies missing skills and provides recommendations for development to help you achieve your career goals."
+        },
+        {
+            "question": "Can I receive personalized career coaching through Catalyst?",
+            "response": "Currently, personalized career coaching is not a feature, but you can receive career advice through our resources and support team."
+        },
+        {
+            "question": "How can I make my profile stand out to employers?",
+            "response": "Make your profile stand out by highlighting key achievements, showcasing your skills, and keeping your information current."
+        },
+        {
+            "question": "Can I track my progress in training programs?",
+            "response": "Yes, you can track your progress in training programs through the learning section of your Catalyst profile."
+        },
+        {
+            "question": "How do I update my contact information on Catalyst?",
+            "response": "Update your contact information through the profile settings section of Catalyst."
+        },
+        {
+            "question": "What should I do if I encounter issues with job applications?",
+            "response": "If you encounter issues with job applications, contact our support team for assistance."
+        },
+        {
+            "question": "Can I view job postings without registering on Catalyst?",
+            "response": "Viewing job postings requires registration to ensure personalized recommendations and access to application features."
+        },
+        {
+            "question": "How does Catalyst handle user data privacy?",
+            "response": "Catalyst handles user data privacy with strict security measures and compliance with data protection regulations."
+        },
+        {
+            "question": "What are the most effective ways to prepare for job interviews?",
+            "response": "Effective ways to prepare include researching the company, practicing interview questions, and reviewing your resume and experiences."
+        },
+        {
+            "question": "Can I get job recommendations based on my past experiences?",
+            "response": "Yes, job recommendations are tailored based on your past experiences, skills, and career preferences."
+        },
+        {
+            "question": "How can I enhance my profile with additional skills?",
+            "response": "Enhance your profile by adding new skills through assessments, training programs, and relevant experiences."
+        },
+        {
+            "question": "What should I do if I have questions about Catalyst features?",
+            "response": "Refer to our help section or contact our support team for answers to questions about Catalyst features."
+        },
+        {
+            "question": "How can I get the most out of Catalyst\u2019s AI-powered recommendations?",
+            "response": "To get the most out of AI-powered recommendations, keep your profile updated and actively engage with the suggested opportunities."
+        },
+        {
+            "question": "Can I receive feedback on my resume from Catalyst?",
+            "response": "Currently, Catalyst does not provide feedback on resumes, but you can use our resume wizard to improve your resume."
+        },
+        {
+            "question": "What should I do if I want to report inappropriate content?",
+            "response": "Report inappropriate content through our reporting tool or contact our support team for assistance."
+        },
+        {
+            "question": "How does Catalyst help with finding internships?",
+            "response": "Catalyst helps find internships by recommending opportunities based on your skills and career goals."
+        },
+        {
+            "question": "What are the benefits of using Catalyst for job search?",
+            "response": "Benefits include personalized job recommendations, skill assessments, training programs, and networking opportunities."
+        },
+        {
+            "question": "Can I save job listings on Catalyst?",
+            "response": "Yes, you can save job listings to your profile for easy access and tracking."
+        },
+        {
+            "question": "How can I update my skills on Catalyst?",
+            "response": "Update your skills through the profile section by adding new skills and completing relevant assessments."
+        },
+        {
+            "question": "What is the best way to use the job market insights feature?",
+            "response": "Use job market insights to understand trends, demand for skills, and opportunities in your field."
+        },
+        {
+            "question": "Can Catalyst assist with career planning?",
+            "response": "Yes, Catalyst assists with career planning by providing tools for skill assessment, goal setting, and job recommendations."
+        },
+        {
+            "question": "How do I set up job alerts on Catalyst?",
+            "response": "Set up job alerts through your profile settings to receive notifications about job opportunities matching your criteria."
+        },
+        {
+            "question": "Can I get recommendations for remote training programs?",
+            "response": "Yes, Catalyst can recommend remote training programs based on your skill gaps and career goals."
+        },
+        {
+            "question": "What should I do if I encounter issues with the AI recommendations?",
+            "response": "If you encounter issues with AI recommendations, contact our support team for assistance and feedback."
+        },
+        {
+            "question": "How can I use Catalyst to prepare for a career change?",
+            "response": "Use Catalyst to assess your current skills, identify gaps, and find relevant training and job opportunities for a successful career change."
+        },
+        {
+            "question": "How does Catalyst support continuous learning?",
+            "response": "Catalyst supports continuous learning through skill assessments, personalized recommendations, and access to a variety of training programs."
+        },
+        {
+            "question": "what is your working hours?",
+            "response": "9-5"
+        },
+        {
+            "question": "who are you?",
+            "response": "I am the chatbot created by catalyst team"
+        }
+    ]
+}
