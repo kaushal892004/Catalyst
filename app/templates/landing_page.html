@@ -1,0 +1,426 @@
+{% extends 'base.html' %}
+{% block title %}
+Home - Catalyst
+{% endblock %}
+{% block landing %}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/ScrollTrigger.min.js"></script>
+
+<!-- Landing Page Section -->
+<div class="relative bg-white pt-10 lg:p-auto lg:h-2/3">
+
+    <div class="absolute inset-0 w-full lg:h-auto bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 ">
+    </div>
+    <div class="container mx-auto relative z-10 w-full h-1/2 flex items-center justify-around ">
+
+        <div class="text-center text-white w-1/2">
+            <h1 class="text-5xl lg:text-6xl font-bold mb-4 drop-shadow-lg">
+                Welcome to <span class="text-yellow-400">Catalyst</span>
+            </h1>
+            <p class="text-lg lg:text-2xl font-light mb-8">
+                A platform to boost your career and discover opportunities.
+            </p>
+            <a href="{{ url_for('login') }}"
+                class="inline-block bg-yellow-400 hover:bg-yellow-500 text-white font-semibold py-3 px-8 rounded-full shadow-lg transition duration-300">
+                Get Started
+            </a>
+        </div>
+        <div class="w-1/3 h-2/2e3 ">
+            <img class=" object-fit" src="../static/images/landing.svg" alt="succes">
+        </div>
+    </div>
+</div>
+
+<div class="flex flex-col gap-6 overflow-hidden ">
+    <h1 class="text-center font-bold text-6xl my-2">Features</h1>
+
+    <section class="container flex  items-center justify-around mx-auto py-2 text-center bg-blue">
+        <div class="w-1/2">
+            <h2 class="text-3xl lg:text-5xl font-bold mb-6">
+                Skill Gap Analysis
+            </h2>
+            <p class="text-lg lg:text-xl text-gray-700 mb-12">
+                Identify your skills and find personalized job matches and learning roadmaps.
+            </p>
+            <a href="{{ url_for('skills_assessment') }}"><button type="submit"
+                    class="flex justify-center gap-2 items-center mx-auto shadow-xl text-lg bg-gray-50 backdrop-blur-md lg:font-semibold isolation-auto border-gray-50 before:absolute before:w-full before:transition-all before:duration-700 before:hover:w-full before:-left-full before:hover:left-0 before:rounded-full before:bg-emerald-500 hover:text-gray-50 before:-z-10 before:aspect-square before:hover:scale-150 before:hover:duration-700 relative z-10 px-4 py-2 overflow-hidden border-2 rounded-full group">
+                    Explore
+                    <svg class="w-8 h-8 justify-end group-hover:rotate-90 group-hover:bg-gray-50 text-gray-50 ease-linear duration-300 rounded-full border border-gray-700 group-hover:border-none p-2 rotate-45"
+                        viewBox="0 0 16 19" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M7 18C7 18.5523 7.44772 19 8 19C8.55228 19 9 18.5523 9 18H7ZM8.70711 0.292893C8.31658 -0.0976311 7.68342 -0.0976311 7.29289 0.292893L0.928932 6.65685C0.538408 7.04738 0.538408 7.68054 0.928932 8.07107C1.31946 8.46159 1.95262 8.46159 2.34315 8.07107L8 2.41421L13.6569 8.07107C14.0474 8.46159 14.6805 8.46159 15.0711 8.07107C15.4616 7.68054 15.4616 7.04738 15.0711 6.65685L8.70711 0.292893ZM9 18L9 1H7L7 18H9Z"
+                            class="fill-gray-800 group-hover:fill-gray-800"></path>
+                    </svg>
+                </button></a>
+        </div>
+        <img class="w-1/3" src="../static/images/skillland.svg" alt="">
+
+    </section>
+    <section class="container flex  items-center justify-around mx-auto py-2 text-center bg-blue">
+        <div class="w-1/2">
+            <h2 class="text-3xl lg:text-5xl font-bold mb-6">
+                AI- Powered Job Recommendation and Training
+            </h2>
+            <p class="text-lg lg:text-xl text-gray-700 mb-12">
+                Identify your skills and find personalized job matches and learning roadmaps.
+            </p>
+            <a href="{{ url_for('jobs') }}"><button type="submit"
+                    class="flex justify-center gap-2 items-center mx-auto shadow-xl text-lg bg-gray-50 backdrop-blur-md lg:font-semibold isolation-auto border-gray-50 before:absolute before:w-full before:transition-all before:duration-700 before:hover:w-full before:-left-full before:hover:left-0 before:rounded-full before:bg-emerald-500 hover:text-gray-50 before:-z-10 before:aspect-square before:hover:scale-150 before:hover:duration-700 relative z-10 px-4 py-2 overflow-hidden border-2 rounded-full group">
+                    Explore
+                    <svg class="w-8 h-8 justify-end group-hover:rotate-90 group-hover:bg-gray-50 text-gray-50 ease-linear duration-300 rounded-full border border-gray-700 group-hover:border-none p-2 rotate-45"
+                        viewBox="0 0 16 19" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M7 18C7 18.5523 7.44772 19 8 19C8.55228 19 9 18.5523 9 18H7ZM8.70711 0.292893C8.31658 -0.0976311 7.68342 -0.0976311 7.29289 0.292893L0.928932 6.65685C0.538408 7.04738 0.538408 7.68054 0.928932 8.07107C1.31946 8.46159 1.95262 8.46159 2.34315 8.07107L8 2.41421L13.6569 8.07107C14.0474 8.46159 14.6805 8.46159 15.0711 8.07107C15.4616 7.68054 15.4616 7.04738 15.0711 6.65685L8.70711 0.292893ZM9 18L9 1H7L7 18H9Z"
+                            class="fill-gray-800 group-hover:fill-gray-800"></path>
+                    </svg>
+                </button></a>
+        </div>
+        <img class="w-1/3" src="../static/images/ailand.svg" alt="">
+    </section>
+
+
+    <section class="container flex  items-center justify-around mx-auto py-2 text-center bg-blue">
+        <div class="w-1/2">
+            <h2 class="text-3xl lg:text-5xl font-bold mb-6">
+                Adaptive learning
+            </h2>
+            <p class="text-lg lg:text-xl text-gray-700 mb-12">
+                Get the personalized learning plan.
+            </p>
+            <a href="{{ url_for('adaptive_learning') }}"><button type="submit"
+                    class="flex justify-center gap-2 items-center mx-auto shadow-xl text-lg bg-gray-50 backdrop-blur-md lg:font-semibold isolation-auto border-gray-50 before:absolute before:w-full before:transition-all before:duration-700 before:hover:w-full before:-left-full before:hover:left-0 before:rounded-full before:bg-emerald-500 hover:text-gray-50 before:-z-10 before:aspect-square before:hover:scale-150 before:hover:duration-700 relative z-10 px-4 py-2 overflow-hidden border-2 rounded-full group">
+                    Explore
+                    <svg class="w-8 h-8 justify-end group-hover:rotate-90 group-hover:bg-gray-50 text-gray-50 ease-linear duration-300 rounded-full border border-gray-700 group-hover:border-none p-2 rotate-45"
+                        viewBox="0 0 16 19" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M7 18C7 18.5523 7.44772 19 8 19C8.55228 19 9 18.5523 9 18H7ZM8.70711 0.292893C8.31658 -0.0976311 7.68342 -0.0976311 7.29289 0.292893L0.928932 6.65685C0.538408 7.04738 0.538408 7.68054 0.928932 8.07107C1.31946 8.46159 1.95262 8.46159 2.34315 8.07107L8 2.41421L13.6569 8.07107C14.0474 8.46159 14.6805 8.46159 15.0711 8.07107C15.4616 7.68054 15.4616 7.04738 15.0711 6.65685L8.70711 0.292893ZM9 18L9 1H7L7 18H9Z"
+                            class="fill-gray-800 group-hover:fill-gray-800"></path>
+                    </svg>
+                </button></a>
+        </div>
+        <img class="w-1/3" src="../static/images/adaptivelearning.svg" alt="">
+    </section>
+
+    <section class="container flex  items-center justify-around mx-auto py-2 text-center bg-blue">
+        <div class="w-1/2">
+            <h2 class="text-3xl lg:text-5xl font-bold mb-6">
+                Real time Market Insight
+            </h2>
+            <p class="text-lg lg:text-xl text-gray-700 mb-12">
+                Get Real-time data for your current skills based on market
+            </p>
+            <a href="{{ url_for('dashboard') }}"><button type="submit"
+                    class="flex justify-center gap-2 items-center mx-auto shadow-xl text-lg bg-gray-50 backdrop-blur-md lg:font-semibold isolation-auto border-gray-50 before:absolute before:w-full before:transition-all before:duration-700 before:hover:w-full before:-left-full before:hover:left-0 before:rounded-full before:bg-emerald-500 hover:text-gray-50 before:-z-10 before:aspect-square before:hover:scale-150 before:hover:duration-700 relative z-10 px-4 py-2 overflow-hidden border-2 rounded-full group">
+                    Explore
+                    <svg class="w-8 h-8 justify-end group-hover:rotate-90 group-hover:bg-gray-50 text-gray-50 ease-linear duration-300 rounded-full border border-gray-700 group-hover:border-none p-2 rotate-45"
+                        viewBox="0 0 16 19" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M7 18C7 18.5523 7.44772 19 8 19C8.55228 19 9 18.5523 9 18H7ZM8.70711 0.292893C8.31658 -0.0976311 7.68342 -0.0976311 7.29289 0.292893L0.928932 6.65685C0.538408 7.04738 0.538408 7.68054 0.928932 8.07107C1.31946 8.46159 1.95262 8.46159 2.34315 8.07107L8 2.41421L13.6569 8.07107C14.0474 8.46159 14.6805 8.46159 15.0711 8.07107C15.4616 7.68054 15.4616 7.04738 15.0711 6.65685L8.70711 0.292893ZM9 18L9 1H7L7 18H9Z"
+                            class="fill-gray-800 group-hover:fill-gray-800"></path>
+                    </svg>
+                </button></a>
+        </div>
+        <img class="w-1/3" src="../static/images/marketland.svg" alt="">
+
+    </section>
+
+    <section class="container flex  items-center justify-around mx-auto py-2 text-center bg-blue">
+        <div class="w-1/2">
+            <h2 class="text-3xl lg:text-5xl font-bold mb-6">
+                Resume Wizard
+            </h2>
+            <p class="text-lg lg:text-xl text-gray-700 mb-12">
+                Get your resume Enhanced and Get placed
+            </p>
+            <a href="{{ url_for('resume') }}"><button type="submit"
+                    class="flex justify-center gap-2 items-center mx-auto shadow-xl text-lg bg-gray-50 backdrop-blur-md lg:font-semibold isolation-auto border-gray-50 before:absolute before:w-full before:transition-all before:duration-700 before:hover:w-full before:-left-full before:hover:left-0 before:rounded-full before:bg-emerald-500 hover:text-gray-50 before:-z-10 before:aspect-square before:hover:scale-150 before:hover:duration-700 relative z-10 px-4 py-2 overflow-hidden border-2 rounded-full group">
+                    Explore
+                    <svg class="w-8 h-8 justify-end group-hover:rotate-90 group-hover:bg-gray-50 text-gray-50 ease-linear duration-300 rounded-full border border-gray-700 group-hover:border-none p-2 rotate-45"
+                        viewBox="0 0 16 19" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M7 18C7 18.5523 7.44772 19 8 19C8.55228 19 9 18.5523 9 18H7ZM8.70711 0.292893C8.31658 -0.0976311 7.68342 -0.0976311 7.29289 0.292893L0.928932 6.65685C0.538408 7.04738 0.538408 7.68054 0.928932 8.07107C1.31946 8.46159 1.95262 8.46159 2.34315 8.07107L8 2.41421L13.6569 8.07107C14.0474 8.46159 14.6805 8.46159 15.0711 8.07107C15.4616 7.68054 15.4616 7.04738 15.0711 6.65685L8.70711 0.292893ZM9 18L9 1H7L7 18H9Z"
+                            class="fill-gray-800 group-hover:fill-gray-800"></path>
+                    </svg>
+                </button></a>
+        </div>
+        <img class="w-1/3" src="../static/images/resumeland.svg" alt="">
+
+    </section>
+    <section class="container flex  items-center justify-around mx-auto py-2 text-center bg-blue">
+        <div class="w-1/2">
+            <h2 class="text-3xl lg:text-5xl font-bold mb-6">
+                Community and support
+            </h2>
+            <p class="text-lg lg:text-xl text-gray-700 mb-12">
+                Get Peer-to-Peer Support and Grow
+            </p>
+            <a href="{{ url_for('community') }}"><button type="submit"
+                    class="flex justify-center gap-2 items-center mx-auto shadow-xl text-lg bg-gray-50 backdrop-blur-md lg:font-semibold isolation-auto border-gray-50 before:absolute before:w-full before:transition-all before:duration-700 before:hover:w-full before:-left-full before:hover:left-0 before:rounded-full before:bg-emerald-500 hover:text-gray-50 before:-z-10 before:aspect-square before:hover:scale-150 before:hover:duration-700 relative z-10 px-4 py-2 overflow-hidden border-2 rounded-full group">
+                    Explore
+                    <svg class="w-8 h-8 justify-end group-hover:rotate-90 group-hover:bg-gray-50 text-gray-50 ease-linear duration-300 rounded-full border border-gray-700 group-hover:border-none p-2 rotate-45"
+                        viewBox="0 0 16 19" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M7 18C7 18.5523 7.44772 19 8 19C8.55228 19 9 18.5523 9 18H7ZM8.70711 0.292893C8.31658 -0.0976311 7.68342 -0.0976311 7.29289 0.292893L0.928932 6.65685C0.538408 7.04738 0.538408 7.68054 0.928932 8.07107C1.31946 8.46159 1.95262 8.46159 2.34315 8.07107L8 2.41421L13.6569 8.07107C14.0474 8.46159 14.6805 8.46159 15.0711 8.07107C15.4616 7.68054 15.4616 7.04738 15.0711 6.65685L8.70711 0.292893ZM9 18L9 1H7L7 18H9Z"
+                            class="fill-gray-800 group-hover:fill-gray-800"></path>
+                    </svg>
+                </button></a>
+        </div>
+        <img class="w-1/3" src="../static/images/communityland.svg" alt="">
+
+    </section>
+    <h1 class="text-center font-bold text-6xl my-2">Upcomming Features</h1>
+
+    <section class="container flex  items-center justify-around mx-auto py-2 text-center bg-blue">
+        <div class="w-1/2">
+            <h2 class="text-3xl lg:text-5xl font-bold mb-6">
+                Internship Oppurtunity
+            </h2>
+            <p class="text-lg lg:text-xl text-gray-700 mb-12">
+                Get Experiece on the skills you have.
+            </p>
+            <a href="{{ url_for('skills_assessment') }}"><button type="submit"
+                    class="flex justify-center gap-2 items-center mx-auto shadow-xl text-lg bg-gray-50 backdrop-blur-md lg:font-semibold isolation-auto border-gray-50 before:absolute before:w-full before:transition-all before:duration-700 before:hover:w-full before:-left-full before:hover:left-0 before:rounded-full before:bg-emerald-500 hover:text-gray-50 before:-z-10 before:aspect-square before:hover:scale-150 before:hover:duration-700 relative z-10 px-4 py-2 overflow-hidden border-2 rounded-full group">
+                    Upcoming
+                    <svg class="w-8 h-8 justify-end group-hover:rotate-90 group-hover:bg-gray-50 text-gray-50 ease-linear duration-300 rounded-full border border-gray-700 group-hover:border-none p-2 rotate-45"
+                        viewBox="0 0 16 19" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M7 18C7 18.5523 7.44772 19 8 19C8.55228 19 9 18.5523 9 18H7ZM8.70711 0.292893C8.31658 -0.0976311 7.68342 -0.0976311 7.29289 0.292893L0.928932 6.65685C0.538408 7.04738 0.538408 7.68054 0.928932 8.07107C1.31946 8.46159 1.95262 8.46159 2.34315 8.07107L8 2.41421L13.6569 8.07107C14.0474 8.46159 14.6805 8.46159 15.0711 8.07107C15.4616 7.68054 15.4616 7.04738 15.0711 6.65685L8.70711 0.292893ZM9 18L9 1H7L7 18H9Z"
+                            class="fill-gray-800 group-hover:fill-gray-800"></path>
+                    </svg>
+                </button></a>
+        </div>
+        <img class="w-1/3" src="../static/images/internship.svg" alt="">
+
+    </section>
+    <section class="container flex  items-center justify-around mx-auto py-2 text-center bg-blue">
+        <div class="w-1/2">
+            <h2 class="text-3xl lg:text-5xl font-bold mb-6">
+                Mock Interview
+            </h2>
+            <p class="text-lg lg:text-xl text-gray-700 mb-12">
+                Candidates can take Mock Interview experience increases the chances of selection.
+            </p>
+            <a href="{{ url_for('skills_assessment') }}"><button type="submit"
+                    class="flex justify-center gap-2 items-center mx-auto shadow-xl text-lg bg-gray-50 backdrop-blur-md lg:font-semibold isolation-auto border-gray-50 before:absolute before:w-full before:transition-all before:duration-700 before:hover:w-full before:-left-full before:hover:left-0 before:rounded-full before:bg-emerald-500 hover:text-gray-50 before:-z-10 before:aspect-square before:hover:scale-150 before:hover:duration-700 relative z-10 px-4 py-2 overflow-hidden border-2 rounded-full group">
+                    Upcoming
+                    <svg class="w-8 h-8 justify-end group-hover:rotate-90 group-hover:bg-gray-50 text-gray-50 ease-linear duration-300 rounded-full border border-gray-700 group-hover:border-none p-2 rotate-45"
+                        viewBox="0 0 16 19" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M7 18C7 18.5523 7.44772 19 8 19C8.55228 19 9 18.5523 9 18H7ZM8.70711 0.292893C8.31658 -0.0976311 7.68342 -0.0976311 7.29289 0.292893L0.928932 6.65685C0.538408 7.04738 0.538408 7.68054 0.928932 8.07107C1.31946 8.46159 1.95262 8.46159 2.34315 8.07107L8 2.41421L13.6569 8.07107C14.0474 8.46159 14.6805 8.46159 15.0711 8.07107C15.4616 7.68054 15.4616 7.04738 15.0711 6.65685L8.70711 0.292893ZM9 18L9 1H7L7 18H9Z"
+                            class="fill-gray-800 group-hover:fill-gray-800"></path>
+                    </svg>
+                </button></a>
+        </div>
+        <img class="w-1/3" src="../static/images/mockinterview.svg" alt="">
+
+    </section>
+
+    <section class="container flex  items-center justify-around mx-auto py-2 text-center bg-blue">
+        <div class="w-1/2">
+            <h2 class="text-3xl lg:text-5xl font-bold mb-6">
+                Competitive Opportunity
+            </h2>
+            <p class="text-lg lg:text-xl text-gray-700 mb-12">
+                Opportunities like Hackathon, other Cooporate opportunities.
+            </p>
+            <a href="{{ url_for('skills_assessment') }}"><button type="submit"
+                    class="flex justify-center gap-2 items-center mx-auto shadow-xl text-lg bg-gray-50 backdrop-blur-md lg:font-semibold isolation-auto border-gray-50 before:absolute before:w-full before:transition-all before:duration-700 before:hover:w-full before:-left-full before:hover:left-0 before:rounded-full before:bg-emerald-500 hover:text-gray-50 before:-z-10 before:aspect-square before:hover:scale-150 before:hover:duration-700 relative z-10 px-4 py-2 overflow-hidden border-2 rounded-full group">
+                    Upcoming
+                    <svg class="w-8 h-8 justify-end group-hover:rotate-90 group-hover:bg-gray-50 text-gray-50 ease-linear duration-300 rounded-full border border-gray-700 group-hover:border-none p-2 rotate-45"
+                        viewBox="0 0 16 19" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M7 18C7 18.5523 7.44772 19 8 19C8.55228 19 9 18.5523 9 18H7ZM8.70711 0.292893C8.31658 -0.0976311 7.68342 -0.0976311 7.29289 0.292893L0.928932 6.65685C0.538408 7.04738 0.538408 7.68054 0.928932 8.07107C1.31946 8.46159 1.95262 8.46159 2.34315 8.07107L8 2.41421L13.6569 8.07107C14.0474 8.46159 14.6805 8.46159 15.0711 8.07107C15.4616 7.68054 15.4616 7.04738 15.0711 6.65685L8.70711 0.292893ZM9 18L9 1H7L7 18H9Z"
+                            class="fill-gray-800 group-hover:fill-gray-800"></path>
+                    </svg>
+                </button></a>
+        </div>
+        <img class="w-1/3" src="../static/images/compete.svg" alt="">
+
+    </section>
+    <section class="container flex  items-center justify-around mx-auto py-2 text-center bg-blue">
+        <div class="w-1/2">
+            <h2 class="text-3xl lg:text-5xl font-bold mb-6">
+                Freelacing
+            </h2>
+            <p class="text-lg lg:text-xl text-gray-700 mb-12">
+                Get Earning Opportunity by Using our skills at right project
+            </p>
+            <a href="{{ url_for('skills_assessment') }}"><button type="submit"
+                    class="flex justify-center gap-2 items-center mx-auto shadow-xl text-lg bg-gray-50 backdrop-blur-md lg:font-semibold isolation-auto border-gray-50 before:absolute before:w-full before:transition-all before:duration-700 before:hover:w-full before:-left-full before:hover:left-0 before:rounded-full before:bg-emerald-500 hover:text-gray-50 before:-z-10 before:aspect-square before:hover:scale-150 before:hover:duration-700 relative z-10 px-4 py-2 overflow-hidden border-2 rounded-full group">
+                    Upcoming
+                    <svg class="w-8 h-8 justify-end group-hover:rotate-90 group-hover:bg-gray-50 text-gray-50 ease-linear duration-300 rounded-full border border-gray-700 group-hover:border-none p-2 rotate-45"
+                        viewBox="0 0 16 19" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M7 18C7 18.5523 7.44772 19 8 19C8.55228 19 9 18.5523 9 18H7ZM8.70711 0.292893C8.31658 -0.0976311 7.68342 -0.0976311 7.29289 0.292893L0.928932 6.65685C0.538408 7.04738 0.538408 7.68054 0.928932 8.07107C1.31946 8.46159 1.95262 8.46159 2.34315 8.07107L8 2.41421L13.6569 8.07107C14.0474 8.46159 14.6805 8.46159 15.0711 8.07107C15.4616 7.68054 15.4616 7.04738 15.0711 6.65685L8.70711 0.292893ZM9 18L9 1H7L7 18H9Z"
+                            class="fill-gray-800 group-hover:fill-gray-800"></path>
+                    </svg>
+                </button></a>
+        </div>
+        <img class="w-1/3" src="../static/images/Freelancer.svg" alt="">
+
+    </section>
+    <section class="container flex  items-center justify-around mx-auto py-2 text-center bg-blue">
+        <div class="w-1/2">
+            <h2 class="text-3xl lg:text-5xl font-bold mb-6">
+                Enhanced Traning
+            </h2>
+            <p class="text-lg lg:text-xl text-gray-700 mb-12">
+                Get personalises Practice section for whaat your learning.
+            </p>
+            <a href="{{ url_for('skills_assessment') }}"><button type="submit"
+                    class="flex justify-center gap-2 items-center mx-auto shadow-xl text-lg bg-gray-50 backdrop-blur-md lg:font-semibold isolation-auto border-gray-50 before:absolute before:w-full before:transition-all before:duration-700 before:hover:w-full before:-left-full before:hover:left-0 before:rounded-full before:bg-emerald-500 hover:text-gray-50 before:-z-10 before:aspect-square before:hover:scale-150 before:hover:duration-700 relative z-10 px-4 py-2 overflow-hidden border-2 rounded-full group">
+                    Upcoming
+                    <svg class="w-8 h-8 justify-end group-hover:rotate-90 group-hover:bg-gray-50 text-gray-50 ease-linear duration-300 rounded-full border border-gray-700 group-hover:border-none p-2 rotate-45"
+                        viewBox="0 0 16 19" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M7 18C7 18.5523 7.44772 19 8 19C8.55228 19 9 18.5523 9 18H7ZM8.70711 0.292893C8.31658 -0.0976311 7.68342 -0.0976311 7.29289 0.292893L0.928932 6.65685C0.538408 7.04738 0.538408 7.68054 0.928932 8.07107C1.31946 8.46159 1.95262 8.46159 2.34315 8.07107L8 2.41421L13.6569 8.07107C14.0474 8.46159 14.6805 8.46159 15.0711 8.07107C15.4616 7.68054 15.4616 7.04738 15.0711 6.65685L8.70711 0.292893ZM9 18L9 1H7L7 18H9Z"
+                            class="fill-gray-800 group-hover:fill-gray-800"></path>
+                    </svg>
+                </button></a>
+        </div>
+        <img class="w-1/3" src="../static/images/practice.svg" alt="">
+
+    </section>
+    <section class="container flex  items-center justify-around mx-auto py-2 text-center bg-blue">
+        <div class="w-1/2">
+            <h2 class="text-3xl lg:text-5xl font-bold mb-6">
+                AI Based Roadmap
+            </h2>
+            <p class="text-lg lg:text-xl text-gray-700 mb-12">
+                Get Path for your Goal for self progress.
+            </p>
+            <a href="{{ url_for('skills_assessment') }}"><button type="submit"
+                    class="flex justify-center gap-2 items-center mx-auto shadow-xl text-lg bg-gray-50 backdrop-blur-md lg:font-semibold isolation-auto border-gray-50 before:absolute before:w-full before:transition-all before:duration-700 before:hover:w-full before:-left-full before:hover:left-0 before:rounded-full before:bg-emerald-500 hover:text-gray-50 before:-z-10 before:aspect-square before:hover:scale-150 before:hover:duration-700 relative z-10 px-4 py-2 overflow-hidden border-2 rounded-full group">
+                    Upcoming
+                    <svg class="w-8 h-8 justify-end group-hover:rotate-90 group-hover:bg-gray-50 text-gray-50 ease-linear duration-300 rounded-full border border-gray-700 group-hover:border-none p-2 rotate-45"
+                        viewBox="0 0 16 19" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M7 18C7 18.5523 7.44772 19 8 19C8.55228 19 9 18.5523 9 18H7ZM8.70711 0.292893C8.31658 -0.0976311 7.68342 -0.0976311 7.29289 0.292893L0.928932 6.65685C0.538408 7.04738 0.538408 7.68054 0.928932 8.07107C1.31946 8.46159 1.95262 8.46159 2.34315 8.07107L8 2.41421L13.6569 8.07107C14.0474 8.46159 14.6805 8.46159 15.0711 8.07107C15.4616 7.68054 15.4616 7.04738 15.0711 6.65685L8.70711 0.292893ZM9 18L9 1H7L7 18H9Z"
+                            class="fill-gray-800 group-hover:fill-gray-800"></path>
+                    </svg>
+                </button></a>
+        </div>
+        <img class="w-1/3" src="../static/images/airoadmap.svg" alt="">
+
+    </section>
+    <!-- Chatbot Icon -->
+    <div id="chatbot-icon" class="h-16 w-16 rounded-full cursor-pointer fixed bottom-5 right-5 ">
+        <img class="object-cover h-full w-full" src="{{ url_for('static', filename='images/robot.png') }}"
+            alt="Chatbot">
+    </div>
+
+    <!-- Chatbot Window -->
+    <div id="chatbot-window"
+        class="fixed bottom-16 right-6 w-80 h-96 bg-white shadow-lg rounded-lg hidden flex flex-col overflow-hidden">
+        <!-- Chatbot Header -->
+        <div class="bg-green-500 p-4 text-white font-bold flex justify-between items-center">
+            <span>Chat with us</span>
+            <button id="close-chatbot" class="text-white hover:text-gray-300">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+
+        <!-- Chatbot Messages Area -->
+        <div class="flex-grow p-4 overflow-y-auto">
+            <div class="text-gray-600 text-sm mb-4">How can we assist you today?</div>
+            <!-- Chatbot Messages Will Appear Here -->
+        </div>
+
+        <!-- Chatbot Input Area -->
+        <div class="p-4 bg-gray-100">
+            <input type="text" id="chatbot-input" class="w-full p-2 border border-gray-300 rounded-md"
+                placeholder="Type your message...">
+            <button id="send-message" class="mt-2 bg-green-500 text-white py-2 px-4 rounded-full hover:bg-green-600">
+                Send
+            </button>
+        </div>
+    </div>
+
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            gsap.registerPlugin(ScrollTrigger);
+
+            // Select all sections
+            const sections = document.querySelectorAll('section');
+
+            // Add animation to each section
+            sections.forEach((section, index) => {
+                gsap.from(section, {
+                    x: index % 2 === 0 ? '-100%' : '100%', // alternate left and right
+                    opacity: 0,
+                    duration: 1.5,
+                    ease: 'power2.out',
+                    scrollTrigger: {
+                        trigger: section,
+                        start: 'top 80%', // Start animation when section is in view
+                        end: 'bottom 60%',
+                        scrub: true, // Smooth animation
+                        toggleActions: 'play none none reverse', // Play when in view and reverse when out of view
+                    }
+                });
+            });
+        });
+        // Toggle Chatbot Window
+        const chatbotIcon = document.getElementById('chatbot-icon');
+        const chatbotWindow = document.getElementById('chatbot-window');
+        const closeChatbot = document.getElementById('close-chatbot');
+        const sendMessage = document.getElementById('send-message');
+        const chatbotInput = document.getElementById('chatbot-input');
+        const messagesArea = chatbotWindow.querySelector('.flex-grow');
+
+        chatbotIcon.addEventListener('click', () => {
+            chatbotWindow.classList.toggle('hidden');
+        });
+
+        closeChatbot.addEventListener('click', () => {
+            chatbotWindow.classList.add('hidden');
+        });
+
+        sendMessage.addEventListener('click', async () => {
+            const userMessage = chatbotInput.value.trim();
+            if (userMessage) {
+                // Append user message to the chat area
+                const messageDiv = document.createElement('div');
+                messageDiv.textContent = `You: ${userMessage}`;
+                messageDiv.classList.add('text-gray-800', 'mb-4');
+                messagesArea.appendChild(messageDiv);
+                chatbotInput.value = '';
+
+                // Send message to Flask backend
+                try {
+                    const response = await fetch('/chat', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ message: userMessage }),
+                    });
+                    const data = await response.json();
+
+                    // Append bot response to the chat area
+                    const botResponseDiv = document.createElement('div');
+                    botResponseDiv.textContent = `Bot: ${data.response}`;
+                    botResponseDiv.classList.add('text-gray-600', 'mb-4');
+                    messagesArea.appendChild(botResponseDiv);
+
+                    // Scroll to the bottom of the messages area
+                    messagesArea.scrollTop = messagesArea.scrollHeight;
+                } catch (error) {
+                    console.error('Error sending message:', error);
+                }
+            }
+        });
+
+    </script>
+
+
+</div>
+
+
+{% endblock %}

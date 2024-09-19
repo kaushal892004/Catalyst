@@ -1,0 +1,304 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mx-auto p-6">
+    <h1 class="text-3xl font-bold mb-6">Skills Assessment</h1>
+    
+    <!-- Role Selector -->
+    <div class="mb-6">
+        <label for="role" class="block text-lg font-medium mb-2">Select Your Desired Role:</label>
+        <select id="role" class="form-select block w-full mt-1">
+            <option value="">-- Select --</option>
+            <option value="Python Developer">Python Developer</option>
+            <option value="JavaScript Developer">JavaScript Developer</option>
+            <option value="Data Scientist">Data Scientist</option>
+            <option value="React Developer">React Developer</option>
+            <option value="Full Stack Developer">Full Stack Developer</option>
+            <option value="Django Developer">Django Developer</option>
+            <option value="Flask Developer">Flask Developer</option>
+            <option value="Backend Developer">Backend Developer</option>
+            <option value="Frontend Developer">Frontend Developer</option>
+            <option value="Machine Learning Engineer">Machine Learning Engineer</option>
+            <option value="DevOps Engineer">DevOps Engineer</option>
+            <option value="Software Engineer">Software Engineer</option>
+        </select>
+    </div>
+
+    <!-- Skills Selector -->
+    <div class="mb-6">
+        <label for="skills" class="block text-lg font-medium mb-2">Select Skill Category:</label>
+        <select id="skills" class="form-select block w-full mt-1">
+            <option value="">-- Select --</option>
+            <option value="Python">Python</option>
+            <option value="JavaScript">JavaScript</option>
+            <option value="SQL">SQL</option>
+            <option value="React">React</option>
+            <option value="Django">Django</option>
+            <option value="Flask">Flask</option>
+        </select>
+    </div>
+    
+    <!-- Quiz Container -->
+    <div id="quiz-container" class="space-y-6">
+        <!-- Questions will be dynamically added here -->
+    </div>
+    
+    <!-- Submit Button -->
+    <div class="mt-6">
+        <button id="submit-answers" class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">
+            Submit Answers
+        </button>
+    </div>
+
+    <!-- Result Section -->
+    <div id="result" class="mt-6 text-lg font-semibold">
+        <!-- Result will be displayed here -->
+    </div>
+</div>
+
+<script>
+    const questionsData = {
+        Python: [
+            {
+                question: "What is the output of the following code?\n```python\nprint(2 ** 3 ** 2)\n```",
+                options: ["64", "512", "8", "256"],
+                answer: "512"
+            },
+            {
+                question: "Which of the following is a mutable data type in Python?",
+                options: ["Tuple", "String", "List", "Integer"],
+                answer: "List"
+            },
+            {
+                question: "How do you declare a variable that holds a list in Python?",
+                options: ["list = []", "list = {}", "list = ()", "list = \"\""],
+                answer: "list = []"
+            },
+            {
+                question: "What is the result of the following Python expression?\n```python\nlen(\"Python\") > 5\n```",
+                options: ["True", "False"],
+                answer: "True"
+            },
+            {
+                question: "What does the `len()` function do in Python?",
+                options: ["Returns the number of items in an object", "Converts a string to uppercase", "Returns the type of an object", "Computes the square root of a number"],
+                answer: "Returns the number of items in an object"
+            }
+        ],
+        JavaScript: [
+            {
+                question: "What is the correct way to declare a JavaScript variable?",
+                options: ["var myVariable;", "variable myVariable;", "myVariable = var;", "let myVariable = ;"],
+                answer: "var myVariable;"
+            },
+            {
+                question: "Which method is used to add an element at the end of an array in JavaScript?",
+                options: ["array.push(element)", "array.pop(element)", "array.shift(element)", "array.unshift(element)"],
+                answer: "array.push(element)"
+            },
+            {
+                question: "How do you create a new object in JavaScript?",
+                options: ["var obj = {}", "var obj = ()", "var obj = []", "var obj = new Object()"],
+                answer: "var obj = {}"
+            },
+            {
+                question: "What will `console.log(typeof NaN)` output in JavaScript?",
+                options: ["number", "NaN", "undefined", "object"],
+                answer: "number"
+            },
+            {
+                question: "Which of the following methods is used to get the length of an array in JavaScript?",
+                options: ["array.length()", "array.getLength()", "array.size()", "array.length"],
+                answer: "array.length"
+            }
+        ],
+        SQL: [
+            {
+                question: "Which SQL clause is used to filter records?",
+                options: ["WHERE", "ORDER BY", "GROUP BY", "HAVING"],
+                answer: "WHERE"
+            },
+            {
+                question: "What is the purpose of the `JOIN` clause in SQL?",
+                options: ["To combine rows from two or more tables based on a related column", "To delete rows from a table", "To update rows in a table", "To select a subset of rows from a table"],
+                answer: "To combine rows from two or more tables based on a related column"
+            },
+            {
+                question: "Which SQL statement is used to retrieve data from a database?",
+                options: ["GET", "SELECT", "FETCH", "RETRIEVE"],
+                answer: "SELECT"
+            },
+            {
+                question: "How do you create a new table in SQL?",
+                options: ["CREATE TABLE", "ADD TABLE", "INSERT INTO TABLE", "NEW TABLE"],
+                answer: "CREATE TABLE"
+            },
+            {
+                question: "What is the purpose of the `GROUP BY` clause in SQL?",
+                options: ["To group rows that have the same values in specified columns", "To sort the result set", "To filter the result set", "To join multiple tables"],
+                answer: "To group rows that have the same values in specified columns"
+            }
+        ],
+        React: [
+            {
+                question: "What is the purpose of React's `useState` hook?",
+                options: ["To manage state in a functional component", "To handle side effects in a component", "To create a class component", "To provide context to components"],
+                answer: "To manage state in a functional component"
+            },
+            {
+                question: "How do you create a React component?",
+                options: ["By using a function or a class", "By using a method", "By using a hook", "By using a service"],
+                answer: "By using a function or a class"
+            },
+            {
+                question: "What is JSX in React?",
+                options: ["A syntax extension that allows writing HTML elements in JavaScript", "A JavaScript function", "A CSS styling method", "A type of database query language"],
+                answer: "A syntax extension that allows writing HTML elements in JavaScript"
+            },
+            {
+                question: "What does the `render` method do in a React component?",
+                options: ["Returns the JSX that defines the component's UI", "Initializes the component's state", "Handles user events", "Connects to a database"],
+                answer: "Returns the JSX that defines the component's UI"
+            },
+            {
+                question: "Which hook is used to perform side effects in React?",
+                options: ["useEffect", "useContext", "useMemo", "useCallback"],
+                answer: "useEffect"
+            }
+        ],
+        Django: [
+            {
+                question: "What is the default database used by Django?",
+                options: ["SQLite", "PostgreSQL", "MySQL", "MongoDB"],
+                answer: "SQLite"
+            },
+            {
+                question: "Which command is used to start a new Django project?",
+                options: ["django-admin startproject projectname", "django-admin create project projectname", "django-admin init project projectname", "django-admin new project projectname"],
+                answer: "django-admin startproject projectname"
+            },
+            {
+                question: "What is the purpose of Django's `migrate` command?",
+                options: ["To apply and unapply migrations to the database", "To start the development server", "To create a new app", "To install Django packages"],
+                answer: "To apply and unapply migrations to the database"
+            },
+            {
+                question: "How do you define a model in Django?",
+                options: ["By creating a class that inherits from `models.Model`", "By creating a function in `views.py`", "By editing `settings.py`", "By adding entries to `admin.py`"],
+                answer: "By creating a class that inherits from `models.Model`"
+            },
+            {
+                question: "Which Django method is used to render a template in a view?",
+                options: ["render()", "response()", "template()", "view()"],
+                answer: "render()"
+            }
+        ],
+        Flask: [
+            {
+                question: "What is the purpose of Flask's `@app.route` decorator?",
+                options: ["To define URL patterns for view functions", "To manage database connections", "To handle form submissions", "To configure application settings"],
+                answer: "To define URL patterns for view functions"
+            },
+            {
+                question: "What is the purpose of Flask's `app.config`?",
+                options: ["To configure application settings", "To manage routes", "To render templates", "To handle database connections"],
+                answer: "To configure application settings"
+            }
+        ]
+    };
+
+    const quizContainer = document.getElementById('quiz-container');
+    const resultContainer = document.getElementById('result');
+    const roleSelect = document.getElementById('role');
+    const skillsSelect = document.getElementById('skills');
+    const submitButton = document.getElementById('submit-answers');
+
+    let userAnswers = {};
+
+    function displayQuiz(role, skill) {
+        if (!role || !skill || !questionsData[skill]) {
+            quizContainer.innerHTML = '<p class="text-red-500">Please select a valid role and skill category.</p>';
+            return;
+        }
+
+        const questions = questionsData[skill];
+        quizContainer.innerHTML = '';
+
+        questions.forEach((q, index) => {
+            const questionDiv = document.createElement('div');
+            questionDiv.className = 'p-4 border rounded-lg shadow-lg';
+
+            const questionText = document.createElement('p');
+            questionText.innerText = q.question;
+            questionText.className = 'mb-4';
+            questionDiv.appendChild(questionText);
+
+            const optionsDiv = document.createElement('div');
+            optionsDiv.className = 'space-y-2';
+            q.options.forEach(option => {
+                const button = document.createElement('button');
+                button.innerText = option;
+                button.className = 'w-full px-4 py-2 text-white bg-blue-500 hover:bg-blue-600 rounded-lg';
+                button.onclick = () => selectAnswer(index, option, button, q.answer);
+                optionsDiv.appendChild(button);
+            });
+            questionDiv.appendChild(optionsDiv);
+
+            quizContainer.appendChild(questionDiv);
+        });
+    }
+
+    function selectAnswer(questionIndex, selectedOption, button, correctAnswer) {
+        const buttons = button.parentNode.querySelectorAll('button');
+        buttons.forEach(btn => {
+            btn.className = 'w-full px-4 py-2 text-white bg-blue-500 hover:bg-blue-600 rounded-lg';
+            btn.disabled = true;
+        });
+
+        button.className = selectedOption === correctAnswer
+            ? 'w-full px-4 py-2 text-white bg-green-500 rounded-lg'
+            : 'w-full px-4 py-2 text-white bg-red-500 rounded-lg';
+        
+        userAnswers[questionIndex] = selectedOption;
+    }
+
+    function calculateScore() {
+        let score = 0;
+        let totalQuestions = 0;
+
+        Object.keys(userAnswers).forEach(questionIndex => {
+            const q = questionsData[skillsSelect.value][questionIndex];
+            if (userAnswers[questionIndex] === q.answer) {
+                score++;
+            }
+            totalQuestions++;
+        });
+
+        return totalQuestions === 0 ? 0 : (score / totalQuestions) * 100;
+    }
+
+    function showResults() {
+        const score = calculateScore();
+        resultContainer.innerHTML = `Your score is ${score.toFixed(2)}%`;
+    }
+
+    roleSelect.addEventListener('change', () => {
+        const role = roleSelect.value;
+        const skill = skillsSelect.value;
+        displayQuiz(role, skill);
+    });
+
+    skillsSelect.addEventListener('change', () => {
+        const role = roleSelect.value;
+        const skill = skillsSelect.value;
+        displayQuiz(role, skill);
+    });
+
+    submitButton.addEventListener('click', () => {
+        showResults();
+    });
+
+    // Initial quiz display
+    displayQuiz(roleSelect.value, skillsSelect.value);
+</script>
+{% endblock %}
