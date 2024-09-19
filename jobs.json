@@ -1,0 +1,162 @@
+[
+    {
+        "title": "Frontend Developer",
+        "company": "Tech Innovations",
+        "location": "San Francisco",
+        "experience": "2-4 years",
+        "type": "Full-Time",
+        "image_url": "https://example.com/images/frontend_developer.jpg"
+    },
+    {
+        "title": "Backend Engineer",
+        "company": "DataCorp",
+        "location": "New York",
+        "experience": "3-5 years",
+        "type": "Full-Time",
+        "image_url": "https://example.com/images/backend_engineer.jpg"
+    },
+    {
+        "title": "Data Scientist",
+        "company": "Insightful Analytics",
+        "location": "Chicago",
+        "experience": "5+ years",
+        "type": "Contract",
+        "image_url": "https://example.com/images/data_scientist.jpg"
+    },
+    {
+        "title": "UI/UX Designer",
+        "company": "Creative Studio",
+        "location": "Austin",
+        "experience": "1-3 years",
+        "type": "Full-Time",
+        "image_url": "https://example.com/images/ui_ux_designer.jpg"
+    },
+    {
+        "title": "DevOps Engineer",
+        "company": "CloudOps",
+        "location": "Seattle",
+        "experience": "4-6 years",
+        "type": "Full-Time",
+        "image_url": "https://example.com/images/devops_engineer.jpg"
+    },
+    {
+        "title": "Mobile App Developer",
+        "company": "AppWorks",
+        "location": "Los Angeles",
+        "experience": "2-4 years",
+        "type": "Full-Time",
+        "image_url": "https://example.com/images/mobile_app_developer.jpg"
+    },
+    {
+        "title": "Product Manager",
+        "company": "InnovateX",
+        "location": "Boston",
+        "experience": "5-7 years",
+        "type": "Full-Time",
+        "image_url": "https://example.com/images/product_manager.jpg"
+    },
+    {
+        "title": "Full Stack Developer",
+        "company": "CodeCraft",
+        "location": "Dallas",
+        "experience": "3-5 years",
+        "type": "Full-Time",
+        "image_url": "https://example.com/images/full_stack_developer.jpg"
+    },
+    {
+        "title": "System Administrator",
+        "company": "NetSecure",
+        "location": "San Jose",
+        "experience": "3-5 years",
+        "type": "Full-Time",
+        "image_url": "https://example.com/images/system_administrator.jpg"
+    },
+    {
+        "title": "Machine Learning Engineer",
+        "company": "AI Dynamics",
+        "location": "San Francisco",
+        "experience": "4-6 years",
+        "type": "Full-Time",
+        "image_url": "https://example.com/images/ml_engineer.jpg"
+    },
+    {
+        "title": "Cloud Architect",
+        "company": "CloudNet",
+        "location": "Denver",
+        "experience": "6+ years",
+        "type": "Full-Time",
+        "image_url": "https://example.com/images/cloud_architect.jpg"
+    },
+    {
+        "title": "Cybersecurity Analyst",
+        "company": "SecureTech",
+        "location": "Washington DC",
+        "experience": "2-4 years",
+        "type": "Contract",
+        "image_url": "https://example.com/images/cybersecurity_analyst.jpg"
+    },
+    {
+        "title": "Blockchain Developer",
+        "company": "ChainLabs",
+        "location": "Miami",
+        "experience": "3-5 years",
+        "type": "Full-Time",
+        "image_url": "https://example.com/images/blockchain_developer.jpg"
+    },
+    {
+        "title": "AI Researcher",
+        "company": "DeepMind Technologies",
+        "location": "Los Angeles",
+        "experience": "6+ years",
+        "type": "Full-Time",
+        "image_url": "https://example.com/images/ai_researcher.jpg"
+    },
+    {
+        "title": "Frontend Developer",
+        "company": "Pixel Solutions",
+        "location": "New York",
+        "experience": "1-3 years",
+        "type": "Part-Time",
+        "image_url": "https://example.com/images/frontend_developer2.jpg"
+    },
+    {
+        "title": "Full Stack Developer",
+        "company": "DevWorks",
+        "location": "San Diego",
+        "experience": "3-5 years",
+        "type": "Contract",
+        "image_url": "https://example.com/images/full_stack_developer2.jpg"
+    },
+    {
+        "title": "Data Analyst",
+        "company": "Insight Analytics",
+        "location": "Houston",
+        "experience": "1-3 years",
+        "type": "Full-Time",
+        "image_url": "https://example.com/images/data_analyst.jpg"
+    },
+    {
+        "title": "Java Developer",
+        "company": "Code Wizards",
+        "location": "Chicago",
+        "experience": "3-5 years",
+        "type": "Full-Time",
+        "image_url": "https://example.com/images/java_developer.jpg"
+    },
+    {
+        "title": "React.js Developer",
+        "company": "ReactDev",
+        "location": "San Francisco",
+        "experience": "2-4 years",
+        "type": "Full-Time",
+        "image_url": "https://example.com/images/react_js_developer.jpg"
+    },
+    {
+        "title": "Python Developer",
+        "company": "PyTech",
+        "location": "Austin",
+        "experience": "2-4 years",
+        "type": "Full-Time",
+        "image_url": "https://example.com/images/python_developer.jpg"
+    }
+]
