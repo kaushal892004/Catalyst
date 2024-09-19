@@ -452,6 +452,7 @@ def mentorship():
 #         })
 # Render the skills assessment page
 @app.route('/skills_assessment', methods=['GET'])
+@login_required
 def skills_assessment():
     return render_template('skills_assessment.html')
 
