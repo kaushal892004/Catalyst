@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block title %}
+internship - Catalyst
+{% endblock %}
+{% block content %}
+
+<style>
+    .card-hover:hover {
+        transform: scale(1.03);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .btn {
+        background-color: #2B6CB0;
+        /* Tailwind Blue 600 */
+        color: white;
+        border: none;
+    }
+
+    .btn:hover {
+        background-color: #2C5282;
+        /* Tailwind Blue 700 */
+        transition: background-color 0.3s ease-in-out;
+    }
+</style>
+
+<body class="bg-gray-50 font-sans text-gray-900">
+
+    <div class="container mx-auto p-6">
+        <div class="section-header text-center mb-10">
+            <h1 class="text-4xl font-bold mb-2">Internships</h1>
+            <p class="text-lg">Find the best internships that match your skills and interests.</p>
+        </div>
+
+        <div class="internship-list grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Example Internship Card -->
+            <div class="internship-card bg-white text-gray-900 p-6 rounded-lg shadow-lg card-hover">
+                <h2 class="text-2xl font-semibold mb-2">Software Engineering Intern</h2>
+                <p class="mb-2"><span class="font-semibold">Company:</span> Tech Innovators Inc.</p>
+                <p class="mb-2"><span class="font-semibold">Location:</span> Remote</p>
+                <p class="mb-4"><span class="font-semibold">Duration:</span> 6 months</p>
+                <a href="#" class="btn py-2 px-4 rounded hover:bg-blue-700 transition duration-300">Apply Now</a>
+            </div>
+
+            <div class="internship-card bg-white text-gray-900 p-6 rounded-lg shadow-lg card-hover">
+                <h2 class="text-2xl font-semibold mb-2">Data Science Intern</h2>
+                <p class="mb-2"><span class="font-semibold">Company:</span> Data Solutions Ltd.</p>
+                <p class="mb-2"><span class="font-semibold">Location:</span> Bangalore</p>
+                <p class="mb-4"><span class="font-semibold">Duration:</span> 3 months</p>
+                <a href="#" class="btn py-2 px-4 rounded hover:bg-blue-700 transition duration-300">Apply Now</a>
+            </div>
+
+            <!-- Add more internship cards as needed -->
+        </div>
+    </div>
+
+</body>
+
+
+
+{% endblock %}

@@ -1,0 +1,596 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="w-full h-1/2  flex items-center justify-center bg-blend-color-dodge">
+
+
+    <div class="section-header text-center w-1/2 px-9 ">
+        <h1 class="text-5xl font-bold text-white-100 mb-4">Analyse your profile </h1>
+        <p class="text-xl text-gray-600">Get detailed skill gap report for the desired role </p>
+    </div>
+    <img class="w-1/3 " src="../static/images/skill analysis.svg" alt="skillgap">
+</div>
+</div>
+<div class="container mx-auto p-6 max-w-5xl">
+   
+<h1 class="text-5xl font-extrabold text-gray-900 mb-12 text-center">Skills Assessment</h1>
+
+<!-- Role Selector -->
+<div class="mb-8">
+    <label for="role" class="block text-lg font-semibold text-gray-700 mb-3">Select Your Desired Role:</label>
+    <select id="role"
+        class="form-select block w-full p-4 border border-gray-300 rounded-md shadow-md focus:ring-blue-500 focus:border-blue-500">
+        <option value="">-- Select --</option>
+        <option value="Python Developer">Python Developer</option>
+        <option value="JavaScript Developer">JavaScript Developer</option>
+        <option value="Data Scientist">Data Scientist</option>
+        <option value="React Developer">React Developer</option>
+        <option value="Full Stack Developer">Full Stack Developer</option>
+        <option value="Django Developer">Django Developer</option>
+        <option value="Flask Developer">Flask Developer</option>
+        <option value="Backend Developer">Backend Developer</option>
+        <option value="Frontend Developer">Frontend Developer</option>
+        <option value="Machine Learning Engineer">Machine Learning Engineer</option>
+        <option value="DevOps Engineer">DevOps Engineer</option>
+        <option value="Software Engineer">Software Engineer</option>
+    </select>
+</div>
+
+<!-- Skills Selector -->
+<div class="mb-8">
+    <label for="skills" class="block text-lg font-semibold text-gray-700 mb-3">Select Skill Category:</label>
+    <select id="skills"
+        class="form-select block w-full p-4 border border-gray-300 rounded-md shadow-md focus:ring-blue-500 focus:border-blue-500">
+        <option value="">-- Select --</option>
+        <option value="Python">Python</option>
+        <option value="JavaScript">JavaScript</option>
+        <option value="SQL">SQL</option>
+        <option value="React">React</option>
+        <option value="Django">Django</option>
+        <option value="Flask">Flask</option>
+    </select>
+</div>
+
+<!-- Quiz Container -->
+<div id="quiz-container" class="space-y-8">
+    <!-- Questions will be dynamically added here -->
+</div>
+
+<!-- Submit Button -->
+<div class="mt-12 text-center">
+    <button id="submit-answers"
+        class="px-10 py-4 bg-green-600 text-white font-bold rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 transition duration-300">
+        Submit Answers
+    </button>
+</div>
+
+<!-- Result Section -->
+<div id="result-container"
+    class="bg-white p-6 rounded-xl shadow-lg border border-gray-200 max-w-5xl mx-auto mt-8 hidden">
+    <!-- Score Display -->
+    <div class="text-center mb-6">
+        <h2 class="text-3xl font-bold text-gray-900">Your Score: <span id="user-score"
+                class="text-blue-600">85</span>/100</h2>
+        <p class="text-lg text-gray-700 mt-2">Here is your personalized report based on your performance.</p>
+    </div>
+
+    <!-- Skill Gap Analysis -->
+    <div id="skill-gap-section" class="mb-6">
+        <h3 class="text-2xl font-semibold text-gray-800 mb-3">Skill Gap Analysis</h3>
+        <ul id="skill-gap-list" class="list-disc list-inside text-lg text-gray-700">
+            <!-- Skill gaps will be dynamically added here -->
+        </ul>
+    </div>
+
+    <!-- Job Recommendations (for high scorers) -->
+    <div id="job-recommendations" class="mb-6 hidden">
+        <h3 class="text-2xl font-semibold text-gray-800 mb-3">Recommended Job Roles</h3>
+        <div class="space-y-3">
+            <!-- Job recommendations will be dynamically added here -->
+        </div>
+    </div>
+
+    <!-- Course Recommendations (for low/medium scorers) -->
+    <div id="course-recommendations" class="mb-6 hidden">
+        <h3 class="text-2xl font-semibold text-gray-800 mb-3">Recommended Courses to Bridge Skill Gaps</h3>
+        <div class="space-y-3">
+            <!-- Course recommendations will be dynamically added here -->
+        </div>
+    </div>
+
+    <!-- Next Steps Based on Your Score -->
+    <div>
+        <h3 class="text-2xl font-semibold text-gray-800 mb-3">Next Steps Based on Your Score</h3>
+        <p class="text-lg text-gray-700">With a score of <span id="final-score"
+                class="font-bold text-blue-600">85</span>, here’s what you should focus on next:</p>
+        <ul id="next-steps-list" class="list-disc list-inside text-lg text-gray-700 mt-4">
+            <!-- Next steps will be dynamically added here -->
+        </ul>
+    </div>
+    <!-- Download Button -->
+    <div class="flex justify-center mt-4">
+        <button id="download-report"
+            class="px-6 py-2 text-white bg-green-600 rounded-lg hover:bg-green-700 transition-all shadow-md">
+            Download Report as PDF
+        </button>
+    </div>
+</div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+
+<!-- JavaScript Section -->
+<script>
+    const questionsData = {
+        Python: [
+            {
+                question: "What is the output of the following code?\n```python\nprint(2 ** 3 ** 2)\n```",
+                options: ["64", "512", "8", "256"],
+                answer: "512"
+            },
+            {
+                question: "Which of the following is a mutable data type in Python?",
+                options: ["Tuple", "String", "List", "Integer"],
+                answer: "List"
+            },
+            {
+                question: "How do you declare a variable that holds a list in Python?",
+                options: ["list = []", "list = {}", "list = ()", "list = \"\""],
+                answer: "list = []"
+            },
+            {
+                question: "What is the result of the following Python expression?\n```python\nlen(\"Python\") > 5\n```",
+                options: ["True", "False"],
+                answer: "True"
+            },
+            {
+                question: "What does the `len()` function do in Python?",
+                options: ["Returns the number of items in an object", "Converts a string to uppercase", "Returns the type of an object", "Computes the square root of a number"],
+                answer: "Returns the number of items in an object"
+            }
+        ],
+        JavaScript: [
+            {
+                question: "What is the correct way to declare a JavaScript variable?",
+                options: ["var myVariable;", "variable myVariable;", "myVariable = var;", "let myVariable = ;"],
+                answer: "var myVariable;"
+            },
+            {
+                question: "Which method is used to add an element at the end of an array in JavaScript?",
+                options: ["array.push(element)", "array.pop(element)", "array.shift(element)", "array.unshift(element)"],
+                answer: "array.push(element)"
+            },
+            {
+                question: "How do you create a new object in JavaScript?",
+                options: ["var obj = {}", "var obj = ()", "var obj = []", "var obj = new Object()"],
+                answer: "var obj = {}"
+            },
+            {
+                question: "What will `console.log(typeof NaN)` output in JavaScript?",
+                options: ["number", "NaN", "undefined", "object"],
+                answer: "number"
+            },
+            {
+                question: "Which of the following methods is used to get the length of an array in JavaScript?",
+                options: ["array.length()", "array.getLength()", "array.size()", "array.length"],
+                answer: "array.length"
+            }
+        ],
+        SQL: [
+            {
+                question: "Which SQL clause is used to filter records?",
+                options: ["WHERE", "ORDER BY", "GROUP BY", "HAVING"],
+                answer: "WHERE"
+            },
+            {
+                question: "What is the purpose of the `JOIN` clause in SQL?",
+                options: ["To combine rows from two or more tables based on a related column", "To delete rows from a table", "To update rows in a table", "To select a subset of rows from a table"],
+                answer: "To combine rows from two or more tables based on a related column"
+            },
+            {
+                question: "Which SQL statement is used to retrieve data from a database?",
+                options: ["GET", "SELECT", "FETCH", "RETRIEVE"],
+                answer: "SELECT"
+            },
+            {
+                question: "How do you create a new table in SQL?",
+                options: ["CREATE TABLE", "ADD TABLE", "INSERT INTO TABLE", "NEW TABLE"],
+                answer: "CREATE TABLE"
+            },
+            {
+                question: "What is the purpose of the `GROUP BY` clause in SQL?",
+                options: ["To group rows that have the same values in specified columns", "To sort the result set", "To filter the result set", "To join multiple tables"],
+                answer: "To group rows that have the same values in specified columns"
+            }
+        ],
+        React: [
+            {
+                question: "What is the purpose of React's `useState` hook?",
+                options: ["To manage state in a functional component", "To handle side effects in a component", "To create a class component", "To provide context to components"],
+                answer: "To manage state in a functional component"
+            },
+            {
+                question: "How do you create a React component?",
+                options: ["By using a function or a class", "By using a method", "By using a hook", "By using a service"],
+                answer: "By using a function or a class"
+            },
+            {
+                question: "What is JSX in React?",
+                options: ["A syntax extension that allows writing HTML elements in JavaScript", "A JavaScript function", "A CSS styling method", "A type of database query language"],
+                answer: "A syntax extension that allows writing HTML elements in JavaScript"
+            },
+            {
+                question: "What does the `render` method do in a React component?",
+                options: ["Returns the JSX that defines the component's UI", "Initializes the component's state", "Handles user events", "Connects to a database"],
+                answer: "Returns the JSX that defines the component's UI"
+            },
+            {
+                question: "Which hook is used to perform side effects in React?",
+                options: ["useEffect", "useContext", "useMemo", "useCallback"],
+                answer: "useEffect"
+            }
+        ],
+        Django: [
+            {
+                question: "What is the default database used by Django?",
+                options: ["SQLite", "PostgreSQL", "MySQL", "MongoDB"],
+                answer: "SQLite"
+            },
+            {
+                question: "Which command is used to start a new Django project?",
+                options: ["django-admin startproject projectname", "django-admin create project projectname", "django-admin init project projectname", "django-admin new project projectname"],
+                answer: "django-admin startproject projectname"
+            },
+            {
+                question: "What is the purpose of Django's `migrate` command?",
+                options: ["To apply and unapply migrations to the database", "To start the development server", "To create a new app", "To install Django packages"],
+                answer: "To apply and unapply migrations to the database"
+            },
+            {
+                question: "How do you define a model in Django?",
+                options: ["By creating a class that inherits from `models.Model`", "By creating a function in `views.py`", "By editing `settings.py`", "By adding entries to `admin.py`"],
+                answer: "By creating a class that inherits from `models.Model`"
+            },
+            {
+                question: "Which Django method is used to render a template in a view?",
+                options: ["render()", "response()", "template()", "view()"],
+                answer: "render()"
+            }
+        ],
+        Flask: [
+            {
+                question: "What is the purpose of Flask's `@app.route` decorator?",
+                options: ["To define URL patterns for view functions", "To manage database connections", "To handle form submissions", "To configure application settings"],
+                answer: "To define URL patterns for view functions"
+            },
+            {
+                question: "What is the purpose of Flask's `app.config`?",
+                options: ["To configure application settings", "To manage routes", "To render templates", "To handle database connections"],
+                answer: "To configure application settings"
+            }
+        ]
+    };
+
+    const quizContainer = document.getElementById('quiz-container');
+    const resultContainer = document.getElementById('result-container');
+    const roleSelect = document.getElementById('role');
+    const skillsSelect = document.getElementById('skills');
+    const submitButton = document.getElementById('submit-answers');
+
+    let userAnswers = {};
+
+    function displayQuiz(role, skill) {
+        if (!role || !skill || !questionsData[skill]) {
+            quizContainer.innerHTML = '<p class="text-red-500">Please select a valid role and skill category.</p>';
+            return;
+        }
+
+        const questions = questionsData[skill];
+        quizContainer.innerHTML = '';
+
+        questions.forEach((q, index) => {
+            const questionDiv = document.createElement('div');
+            questionDiv.className = 'p-4 border rounded-lg shadow-lg bg-gray-100 transition duration-300 ease-in-out transform ';
+
+            const questionText = document.createElement('p');
+            questionText.innerText = q.question;
+            questionText.className = 'mb-4 font-semibold text-gray-700 text-xl';
+            questionDiv.appendChild(questionText);
+
+            const optionsDiv = document.createElement('div');
+            optionsDiv.className = 'space-y-3';
+            q.options.forEach(option => {
+                const button = document.createElement('button');
+                button.innerText = option;
+                button.className = 'block w-full text-left py-3 px-6 bg-blue-500 text-white font-semibold rounded-lg shadow hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-300';
+                button.onclick = () => selectAnswer(index, option, button, q.answer);
+                optionsDiv.appendChild(button);
+            });
+            questionDiv.appendChild(optionsDiv);
+
+            quizContainer.appendChild(questionDiv);
+        });
+    }
+
+    function selectAnswer(questionIndex, selectedOption, button, correctAnswer) {
+        const buttons = button.parentNode.querySelectorAll('button');
+        buttons.forEach(btn => {
+            btn.className = 'block w-full text-left py-3 px-6 bg-blue-500 text-white font-semibold rounded-lg shadow hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-300';
+            btn.disabled = true;
+        });
+
+        if (selectedOption === correctAnswer) {
+            button.className = 'block w-full text-left py-3 px-6 bg-green-500 text-white font-semibold rounded-lg shadow focus:outline-none focus:ring-2 focus:ring-green-400 transition duration-300';
+        } else {
+            button.className = 'block w-full text-left py-3 px-6 bg-red-500 text-white font-semibold rounded-lg shadow focus:outline-none focus:ring-2 focus:ring-red-400 transition duration-300';
+        }
+
+        userAnswers[questionIndex] = selectedOption;
+    }
+
+    function calculateScore() {
+        let score = 0;
+        let totalQuestions = 0;
+
+        Object.keys(userAnswers).forEach(questionIndex => {
+            const q = questionsData[skillsSelect.value][questionIndex];
+            if (userAnswers[questionIndex] === q.answer) {
+                score++;
+            }
+            totalQuestions++;
+        });
+
+        return totalQuestions === 0 ? 0 : (score / totalQuestions) * 100;
+    }
+
+    function showResults() {
+        const score = calculateScore();
+        const highScoreThreshold = 70; // Define your threshold here
+
+        // Populate score
+        document.getElementById('user-score').textContent = score.toFixed(2);
+        document.getElementById('final-score').textContent = score.toFixed(2);
+
+        // Clear previous data
+        document.getElementById('skill-gap-list').innerHTML = '';
+        document.getElementById('job-recommendations').querySelector('.space-y-3').innerHTML = '';
+        document.getElementById('course-recommendations').querySelector('.space-y-3').innerHTML = '';
+        document.getElementById('next-steps-list').innerHTML = '';
+
+        // Define skill gaps based on user's answers
+        const skillGaps = getSkillGaps();
+
+        // Populate Skill Gap Analysis
+        skillGaps.forEach(gap => {
+            const listItem = document.createElement('li');
+            listItem.textContent = `${gap.skill}: ${gap.level} (Suggestion: ${gap.improvement})`;
+            document.getElementById('skill-gap-list').appendChild(listItem);
+        });
+
+        if (score >= highScoreThreshold) {
+            // Recommend Jobs
+            document.getElementById('job-recommendations').classList.remove('hidden');
+            document.getElementById('course-recommendations').classList.add('hidden');
+
+            const jobs = getJobRecommendations();
+
+            jobs.forEach(job => {
+                const jobDiv = document.createElement('div');
+                jobDiv.classList.add('bg-blue-100', 'p-4', 'rounded-lg', 'shadow-md');
+                jobDiv.innerHTML = `<p class="text-lg text-gray-900"><strong>${job.title}</strong></p><p class="text-gray-600">${job.description}</p>`;
+                document.getElementById('job-recommendations').querySelector('.space-y-3').appendChild(jobDiv);
+            });
+
+            // Populate Next Steps for High Scorers
+            const nextSteps = [
+                "Start applying for frontend developer roles.",
+                "Focus on building advanced JavaScript projects to strengthen your portfolio.",
+                "Learn about modern frontend frameworks like React or Vue."
+            ];
+
+            nextSteps.forEach(step => {
+                const listItem = document.createElement('li');
+                listItem.textContent = step;
+                document.getElementById('next-steps-list').appendChild(listItem);
+            });
+
+        } else {
+            // Recommend Courses
+            document.getElementById('job-recommendations').classList.add('hidden');
+            document.getElementById('course-recommendations').classList.remove('hidden');
+
+            const courses = getCourseRecommendations();
+
+            courses.forEach(course => {
+                const courseDiv = document.createElement('div');
+                courseDiv.classList.add('bg-green-100', 'p-4', 'rounded-lg', 'shadow-md');
+                courseDiv.innerHTML = `<p class="text-lg text-gray-900"><strong>${course.title}</strong></p><p class="text-gray-600">Available on ${course.platform}. <a href="${course.link}" class="text-blue-500 underline" target="_blank">Enroll here</a></p>`;
+                document.getElementById('course-recommendations').querySelector('.space-y-3').appendChild(courseDiv);
+            });
+
+            // Populate Next Steps for Low/Medium Scorers
+            const nextSteps = [
+                "Enroll in advanced JavaScript courses to deepen your understanding.",
+                "Start a Python project to practice what you've learned.",
+                "Focus on mastering foundational skills before moving on to more advanced topics."
+            ];
+
+            nextSteps.forEach(step => {
+                const listItem = document.createElement('li');
+                listItem.textContent = step;
+                document.getElementById('next-steps-list').appendChild(listItem);
+            });
+        }
+
+        // Finally, show the result container
+        resultContainer.classList.remove('hidden');
+    }
+
+    // Function to determine skill gaps based on user's answers
+    function getSkillGaps() {
+        const skill = skillsSelect.value;
+        const gaps = [];
+
+        // Example logic: Identify incorrect answers and suggest improvements
+        const questions = questionsData[skill];
+        questions.forEach((q, index) => {
+            if (userAnswers[index] !== q.answer) {
+                gaps.push({
+                    skill: skill,
+                    level: "Intermediate",
+                    improvement: `Review the concept: ${q.question.split('\n')[0]}`
+                });
+            }
+        });
+
+        // If no gaps, provide positive feedback
+        if (gaps.length === 0) {
+            gaps.push({
+                skill: skill,
+                level: "Advanced",
+                improvement: "Continue practicing to maintain your expertise."
+            });
+        }
+
+        return gaps;
+    }
+
+    // Function to get job recommendations based on the selected skill
+    function getJobRecommendations() {
+        const skill = skillsSelect.value;
+        const jobs = [];
+
+        switch (skill) {
+            case "Python":
+                jobs.push(
+                    { title: "Python Developer", description: "Leverage your Python skills to develop robust backend systems." },
+                    { title: "Data Scientist", description: "Utilize Python for data analysis and machine learning projects." }
+                );
+                break;
+            case "JavaScript":
+                jobs.push(
+                    { title: "Frontend Developer", description: "Use your JavaScript expertise to build dynamic user interfaces." },
+                    { title: "Full Stack Developer", description: "Combine frontend and backend JavaScript skills to handle end-to-end development." }
+                );
+                break;
+            case "SQL":
+                jobs.push(
+                    { title: "Database Administrator", description: "Manage and optimize databases using your SQL knowledge." },
+                    { title: "Data Analyst", description: "Analyze data and generate insights using SQL queries." }
+                );
+                break;
+            case "React":
+                jobs.push(
+                    { title: "React Developer", description: "Develop interactive web applications using React." },
+                    { title: "Frontend Engineer", description: "Design and implement frontend solutions with React." }
+                );
+                break;
+            case "Django":
+                jobs.push(
+                    { title: "Django Developer", description: "Build scalable web applications using the Django framework." },
+                    { title: "Backend Engineer", description: "Develop backend services and APIs with Django." }
+                );
+                break;
+            case "Flask":
+                jobs.push(
+                    { title: "Flask Developer", description: "Create lightweight web applications using Flask." },
+                    { title: "Backend Developer", description: "Develop backend systems and RESTful APIs with Flask." }
+                );
+                break;
+            default:
+                jobs.push(
+                    { title: "Software Engineer", description: "Apply your programming skills in various software development roles." }
+                );
+        }
+
+        return jobs;
+    }
+
+    // Function to get course recommendations based on the selected skill
+    function getCourseRecommendations() {
+        const skill = skillsSelect.value;
+        const courses = [];
+
+        switch (skill) {
+            case "Python":
+                courses.push(
+                    { title: "Complete Python Bootcamp", platform: "Udemy", link: "https://www.udemy.com/course/complete-python-bootcamp/" },
+                    { title: "Python for Everybody", platform: "Coursera", link: "https://www.coursera.org/specializations/python" }
+                );
+                break;
+            case "JavaScript":
+                courses.push(
+                    { title: "JavaScript: Understanding the Weird Parts", platform: "Udemy", link: "https://www.udemy.com/course/understand-javascript/" },
+                    { title: "The Complete JavaScript Course", platform: "Udemy", link: "https://www.udemy.com/course/the-complete-javascript-course/" }
+                );
+                break;
+            case "SQL":
+                courses.push(
+                    { title: "SQL for Data Science", platform: "Coursera", link: "https://www.coursera.org/learn/sql-for-data-science" },
+                    { title: "The Complete SQL Bootcamp", platform: "Udemy", link: "https://www.udemy.com/course/the-complete-sql-bootcamp/" }
+                );
+                break;
+            case "React":
+                courses.push(
+                    { title: "React - The Complete Guide", platform: "Udemy", link: "https://www.udemy.com/course/react-the-complete-guide/" },
+                    { title: "Modern React with Redux", platform: "Udemy", link: "https://www.udemy.com/course/react-redux/" }
+                );
+                break;
+            case "Django":
+                courses.push(
+                    { title: "Django for Everybody", platform: "Coursera", link: "https://www.coursera.org/specializations/django" },
+                    { title: "Python and Django Full Stack Web Developer Bootcamp", platform: "Udemy", link: "https://www.udemy.com/course/python-and-django-full-stack-web-developer-bootcamp/" }
+                );
+                break;
+            case "Flask":
+                courses.push(
+                    { title: "Flask Mega-Tutorial", platform: "Udemy", link: "https://www.udemy.com/course/flask-mega-tutorial/" },
+                    { title: "Python Flask for Beginners", platform: "Udemy", link: "https://www.udemy.com/course/python-flask-for-beginners/" }
+                );
+                break;
+            default:
+                courses.push(
+                    { title: "Full Stack Web Development", platform: "Coursera", link: "https://www.coursera.org/specializations/full-stack-web-development" }
+                );
+        }
+
+        return courses;
+    }
+
+    roleSelect.addEventListener('change', () => {
+        const role = roleSelect.value;
+        const skill = skillsSelect.value;
+        displayQuiz(role, skill);
+    });
+
+    skillsSelect.addEventListener('change', () => {
+        const role = roleSelect.value;
+        const skill = skillsSelect.value;
+        displayQuiz(role, skill);
+    });
+
+    submitButton.addEventListener('click', () => {
+        showResults();
+    });
+
+    // Initial quiz display
+    displayQuiz(roleSelect.value, skillsSelect.value);
+    // Select the download button and the report container
+    const downloadBtn = document.getElementById('download-report');
+    const reportElement = document.getElementById('result-container');
+
+    // Add event listener for download button
+    downloadBtn.addEventListener('click', () => {
+        // Use html2pdf to convert the report element into a PDF
+        const options = {
+            margin: 0.5,
+            filename: 'skill-gap-report.pdf',
+            image: { type: 'jpeg', quality: 0.98 },
+            html2canvas: { scale: 2 },
+            jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+        };
+
+        html2pdf().from(reportElement).set(options).save();
+    });
+
+</script>
+{% endblock %}

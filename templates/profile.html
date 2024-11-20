@@ -1,0 +1,159 @@
+{% extends 'base.html' %}
+{% block title %}
+Profile - Catalyst
+{% endblock %}
+{% block content %}
+<div class="flex justify-center items-center w-screen min-h-screen bg-gradient-to-r from-blue-50 via-white to-green-50">
+    <!-- Profile Edit Section -->
+    <div class="bg-white rounded-2xl shadow-xl w-full max-w-5xl p-10 relative">
+
+        <!-- Profile Picture and Name -->
+        <div class="flex items-center space-x-6">
+            <!-- Profile Picture -->
+            <div class="relative w-28 h-28 rounded-full overflow-hidden shadow-md border-2 border-purple-400">
+                <img id="profilePic" src="/static/images/default_avatar.png" alt="Profile Picture"
+                    class="w-full h-full object-cover">
+                <label for="profilePicInput"
+                    class="absolute bottom-0 right-0 bg-blue-500 p-1 rounded-full cursor-pointer hover:bg-blue-600">
+                    <svg class="w-6 h-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                </label>
+                <input type="file" id="profilePicInput" class="hidden" accept="image/*">
+            </div>
+
+            <!-- Name and Contact Info -->
+            <div class="flex flex-col">
+                <h3 class="text-3xl font-extrabold text-gray-800">Kaushal Parmar</h3>
+                <span class="text-sm text-blue-600">Student</span>
+                <span class="text-sm text-gray-500">Gandhinagar , Gujarat , India </span>
+            </div>
+        </div>
+
+        <!-- User Details -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+            <div>
+                <label class="block text-lg font-medium text-gray-700">Current Position</label>
+                <input type="text"
+                    class="w-full mt-2 p-3 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500"
+                    value="Backend Developerr">
+            </div>
+            <div>
+                <label class="block text-lg font-medium text-gray-700">Industry</label>
+                <input type="text"
+                    class="w-full mt-2 p-3 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500"
+                    value="Information Technology">
+            </div>
+            <div>
+                <label class="block text-lg font-medium text-gray-700">Phone Number</label>
+                <input type="text"
+                    class="w-full mt-2 p-3 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500"
+                    value="+91 1234567890">
+            </div>
+            <div>
+                <label class="block text-lg font-medium text-gray-700">Email</label>
+                <input type="email"
+                    class="w-full mt-2 p-3 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500"
+                    value="kaushalparmar@gmail.com">
+            </div>
+            <div>
+                <label class="block text-lg font-medium text-gray-700">LinkedIn</label>
+                <input type="url"
+                    class="w-full mt-2 p-3 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500"
+                    value="www.linkedin.com/in/kaushalparmar">
+            </div>
+        </div>
+
+        <!-- Job Status Summary -->
+        <div class="grid grid-cols-3 gap-8 mt-8">
+            <div class="bg-white p-6 rounded-lg shadow-md flex flex-col items-center">
+                <p class="text-gray-600 font-bold">Applied Jobs</p>
+                <p class="text-2xl font-extrabold text-yellow-500">23</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-md flex flex-col items-center">
+                <p class="text-gray-600 font-bold">Viewed By</p>
+                <p class="text-2xl font-extrabold text-purple-500">23</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-md flex flex-col items-center">
+                <p class="text-gray-600 font-bold">Invited</p>
+                <p class="text-2xl font-extrabold text-green-500">45</p>
+            </div>
+        </div>
+
+        <!-- Save Button -->
+        <div class="flex justify-end mt-8">
+            <button id="saveChangesBtn"
+                class="bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition-transform transform hover:scale-105">
+                Save Changes
+            </button>
+        </div>
+
+    </div>
+</div>
+
+<!-- JavaScript for Image Upload -->
+<script>
+    document.getElementById('saveChangesBtn').addEventListener('click', async () => {
+        const formData = new FormData();
+        const profilePicInput = document.getElementById('profilePicInput');
+
+        if (profilePicInput.files.length > 0) {
+            formData.append('profile_picture', profilePicInput.files[0]);
+        }
+
+        // Add other form inputs
+        formData.append('full_name', 'Kaushal Parmar'); // Retrieve this dynamically
+        formData.append('current_position', document.querySelector('input[placeholder="Current Position"]').value);
+        formData.append('industry', document.querySelector('input[placeholder="Industry"]').value);
+        formData.append('phone_number', document.querySelector('input[placeholder="Phone Number"]').value);
+        formData.append('email', document.querySelector('input[placeholder="Email"]').value);
+        formData.append('linkedin', document.querySelector('input[placeholder="LinkedIn"]').value);
+
+        const response = await fetch('/profile', {
+            method: 'POST',
+            body: formData
+        });
+
+        if (response.ok) {
+            alert('Profile updated successfully!');
+            // Optionally redirect or update UI
+        } else {
+            alert('Error updating profile. Please try again.');
+        }
+    });
+
+    document.getElementById('profilePicInput').addEventListener('change', function (event) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            document.getElementById('profilePic').src = e.target.result;
+        }
+        reader.readAsDataURL(event.target.files[0]);
+    });
+
+    document.getElementById('saveChangesBtn').addEventListener('click', async () => {
+        const formData = new FormData();
+        const profilePicInput = document.getElementById('profilePicInput');
+
+        if (profilePicInput.files.length > 0) {
+            formData.append('profile_picture', profilePicInput.files[0]);
+        }
+
+        // Add other form inputs
+        formData.append('full_name', 'Kaushal Parmar'); // Add other form fields dynamically
+
+        const response = await fetch('/profile', {
+            method: 'POST',
+            body: formData
+        });
+
+        if (response.ok) {
+            alert('Profile updated successfully!');
+            // Optionally redirect
+        } else {
+            alert('Error updating profile. Please try again.');
+        }
+    });
+
+</script>
+{% endblock %}

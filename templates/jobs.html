@@ -1,0 +1,302 @@
+{% extends 'base.html' %}
+{% block title %}
+Jobs - Catalyst
+{% endblock %}
+{% block content %}
+
+<!-- Hero Section -->
+<div class="w-full h-1/2 flex items-center justify-center bg-blend-color-dodge">
+    <div class="section-header text-center w-1/2 px-9">
+        <h1 class="text-5xl font-bold  mb-4">Job Recommendations</h1>
+        <p class="text-xl text-gray-600">Find job listings that match your skills and career goals.</p>
+    </div>
+    <img class="w-1/3" src="{{ url_for('static', filename='images/Job.svg') }}" alt="Job Recommendations">
+</div>
+
+<!-- Job Recommendations Based on Profile -->
+<div class="max-w-6xl mx-auto p-6 my-10 bg-white shadow-lg rounded-lg">
+    <div class="mb-6">
+        <h2 class="text-3xl font-bold text-gray-800">Jobs Recommended for You</h2>
+        <p class="text-gray-600 mt-2">Based on your profile and skills, here are some job suggestions:</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" id="recommended-jobs">
+        <!-- Dynamic Job Cards will be inserted here -->
+    </div>
+</div>
+
+
+<!-- Job Search Filters and Listings Section -->
+<div class="max-w-6xl mx-auto p-6 my-10 bg-white shadow-lg rounded-lg">
+    <div class="mb-6">
+        <h1 class="text-3xl font-bold text-gray-800">Search for Jobs</h1>
+        <p class="text-gray-600 mt-2">Use the filters below to search for jobs that match your preferences.</p>
+    </div>
+
+    <!-- Job Search Filters -->
+    <section class="filter-section mb-6">
+        <h2 class="text-2xl font-bold mb-4">Job Filters</h2>
+        <form id="job-search-form" class="space-y-4">
+            <div class="job-filters flex justify-center space-x-4 mb-8">
+                <select id="filter-location"
+                    class="filter-select bg-white border border-gray-300 text-gray-800 py-2 px-4 rounded-lg">
+                    <option value="">Location</option>
+                    <option value="Hyderabad">Hyderabad</option>
+                    <option value="Mumbai">Mumbai</option>
+                    <option value="Bangalore">Bangalore</option>
+                </select>
+                <select id="filter-experience"
+                    class="filter-select bg-white border border-gray-300 text-gray-800 py-2 px-4 rounded-lg">
+                    <option value="">Experience</option>
+                    <option value="0-2">0-2 years</option>
+                    <option value="2-5">2-5 years</option>
+                    <option value="5+">5+ years</option>
+                </select>
+                <select id="filter-job-type"
+                    class="filter-select bg-white border border-gray-300 text-gray-800 py-2 px-4 rounded-lg">
+                    <option value="">Job Type</option>
+                    <option value="Full-Time">Full-Time</option>
+                    <option value="Part-Time">Part-Time</option>
+                    <option value="Contract">Contract</option>
+                </select>
+            </div>
+
+            <button type="button" id="search-jobs-btn"
+                class="w-full bg-blue-500 text-white py-3 rounded-md mt-4 hover:bg-blue-600">
+                Search Jobs
+            </button>
+        </form>
+    </section>
+
+    <!-- Job Listings Section -->
+    <section id="job-listings" class="mt-8 hidden">
+        <h2 class="text-2xl font-bold mb-4">Job Listings</h2>
+        <div class="job-list grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" id="jobs-container">
+            <!-- Dynamic Job Cards -->
+        </div>
+    </section>
+    </div>
+
+    <!-- Mock Data and JavaScript -->
+    <script>
+        // Mock job data
+        // Helper function to parse the experience range from the string
+        function parseExperience(exp) {
+            if (!exp.includes('-')) {
+                return { minExp: parseInt(exp), maxExp: Infinity }; // Handle case like "5+ years"
+            }
+            const [minExp, maxExp] = exp.split('-').map(Number);
+            return { minExp, maxExp };
+        }
+
+        document.getElementById('search-jobs-btn').addEventListener('click', function () {
+            const location = document.getElementById('filter-location').value;
+            const experienceFilter = document.getElementById('filter-experience').value;
+            const jobType = document.getElementById('filter-job-type').value;
+
+            // Filter jobs based on selected criteria
+            const filteredJobs = jobs.filter(job => {
+                // Match location
+                const locationMatch = location === '' || job.location === location;
+
+                // Match job type
+                const jobTypeMatch = jobType === '' || job.type === jobType;
+
+                // Match experience
+                let experienceMatch = true;
+                if (experienceFilter) {
+                    const { minExp: filterMinExp, maxExp: filterMaxExp } = parseExperience(experienceFilter);
+                    const { minExp: jobMinExp, maxExp: jobMaxExp } = parseExperience(job.experience.replace(' years', ''));
+
+                    // Check if the job experience range overlaps with the filter range
+                    experienceMatch = jobMaxExp >= filterMinExp && jobMinExp <= filterMaxExp;
+                }
+
+                return locationMatch && jobTypeMatch && experienceMatch;
+            });
+
+            // Show job listings section
+            document.getElementById('job-listings').classList.remove('hidden');
+
+            // Display filtered jobs
+            displayJobs(filteredJobs);
+        });
+
+        // Mock job data (for testing)
+        const jobs = [
+            { title: 'Frontend Developer',salary:'5 LPA', company: 'Creative Solutions', location: 'Mumbai', experience: '0-2 years', type: 'Full-Time', image_url: "{{ url_for('static', filename='images/companies/ibm.svg') }}" },
+            { title: 'Backend Developer', company: 'Innovate Tech', location: 'Hyderabad', experience: '2-5 years', type: 'Full-Time', image_url: "{{ url_for('static', filename='images/companies/meta.svg') }}" },
+            { title: 'Data Scientist', company: 'Data Insights', location: 'Bangalore', experience: '5+ years', type: 'Contract', image_url: "{{ url_for('static', filename='images/companies/apple.svg') }}" },
+            { title: 'UI/UX Designer', company: 'Design Hub', location: 'Mumbai', experience: '0-2 years', type: 'Part-Time', image_url: "{{ url_for('static', filename='images/companies/messanger.svg') }}" },
+            { title: 'Machine Learning Engineer', company: 'AI Solutions', location: 'Bangalore', experience: '2-5 years', type: 'Full-Time', image_url: "{{ url_for('static', filename='images/companies/google.svg') }}" },
+            { title: 'Web Developer', company: 'Tech Creators', location: 'Hyderabad', experience: '0-2 years', type: 'Contract', image_url: "{{ url_for('static', filename='images/companies/google.svg') }}" },
+            { title: 'Product Manager', company: 'Growth Inc', location: 'Mumbai', experience: '5+ years', type: 'Full-Time', image_url: "{{ url_for('static', filename='images/companies/google.svg') }}" },
+            { title: 'DevOps Engineer', company: 'CloudWorks', location: 'Bangalore', experience: '2-5 years', type: 'Full-Time', image_url: "{{ url_for('static', filename='images/companies/google.svg') }}" },
+            { title: 'Business Analyst', company: 'Data Experts', location: 'Hyderabad', experience: '2-5 years', type: 'Part-Time', image_url: "{{ url_for('static', filename='images/companies/ibm.svg') }}" },
+            { title: 'Graphic Designer', company: 'Creative Studio', location: 'Mumbai', experience: '0-2 years', type: 'Contract', image_url: "{{ url_for('static', filename='images/companies/ibm.svg') }}" },
+            { title: 'Full Stack Developer', company: 'Tech Innovators', location: 'Bangalore', experience: '2-5 years', type: 'Full-Time', image_url: "{{ url_for('static', filename='images/companies/ibm.svg') }}" },
+            { title: 'Database Administrator', company: 'Data Masters', location: 'Hyderabad', experience: '5+ years', type: 'Full-Time', image_url: "{{ url_for('static', filename='images/companies/ibm.svg') }}" },
+            { title: 'Software Tester', company: 'QA Labs', location: 'Mumbai', experience: '0-2 years', type: 'Part-Time', image_url: "{{ url_for('static', filename='images/companies/ibm.svg') }}" },
+            { title: 'Network Engineer', company: 'Net Solutions', location: 'Bangalore', experience: '2-5 years', type: 'Contract', image_url: "{{ url_for('static', filename='images/companies/messanger.svg') }}" },
+            { title: 'SEO Specialist', company: 'Market Experts', location: 'Hyderabad', experience: '0-2 years', type: 'Full-Time', image_url: "{{ url_for('static', filename='images/companies/messanger.svg') }}" },
+            { title: 'Content Writer', company: 'Write Now', location: 'Mumbai', experience: '2-5 years', type: 'Part-Time', image_url: "{{ url_for('static', filename='images/companies/messanger.svg') }}" },
+            { title: 'Mobile App Developer', company: 'App Creators', location: 'Bangalore', experience: '5+ years', type: 'Contract', image_url: "{{ url_for('static', filename='images/companies/messanger.svg') }}" },
+            { title: 'Cloud Engineer', company: 'Sky Tech', location: 'Hyderabad', experience: '2-5 years', type: 'Full-Time', image_url: "{{ url_for('static', filename='images/companies/messanger.svg') }}" },
+            { title: 'Digital Marketer', company: 'Market Masters', location: 'Mumbai', experience: '0-2 years', type: 'Full-Time', image_url: "{{ url_for('static', filename='images/companies/apple.svg') }}" },
+            { title: 'System Analyst', company: 'System Solutions', location: 'Bangalore', experience: '2-5 years', type: 'Contract', image_url: "{{ url_for('static', filename='images/companies/apple.svg') }}" },
+            { title: 'Software Engineer', company: 'CodeWorks', location: 'Hyderabad', experience: '5+ years', type: 'Full-Time', image_url: "{{ url_for('static', filename='images/companies/apple.svg') }}" },
+            { title: 'Data Analyst', company: 'Insight Tech', location: 'Mumbai', experience: '0-2 years', type: 'Part-Time', image_url: "{{ url_for('static', filename='images/companies/apple.svg') }}" },
+            { title: 'Technical Writer', company: 'Tech Writers', location: 'Bangalore', experience: '2-5 years', type: 'Contract', image_url: "{{ url_for('static', filename='images/companies/apple.svg') }}" },
+            { title: 'Sales Engineer', company: 'Sales Experts', location: 'Hyderabad', experience: '5+ years', type: 'Full-Time', image_url: "{{ url_for('static', filename='images/companies/apple.svg') }}" },
+            { title: 'Automation Engineer', company: 'Automation Co.', location: 'Mumbai', experience: '2-5 years', type: 'Part-Time', image_url: "{{ url_for('static', filename='images/companies/apple.svg') }}" },
+            { title: 'Cybersecurity Analyst', company: 'SecureTech', location: 'Bangalore', experience: '5+ years', type: 'Full-Time', image_url: "{{ url_for('static', filename='images/companies/apple.svg') }}" },
+            { title: 'Embedded Systems Engineer', company: 'Tech Systems', location: 'Hyderabad', experience: '0-2 years', type: 'Contract', image_url: "{{ url_for('static', filename='images/companies/apple.svg') }}" },
+            { title: 'Product Designer', company: 'Design Innovators', location: 'Mumbai', experience: '2-5 years', type: 'Full-Time', image_url: "{{ url_for('static', filename='images/companies/apple.svg') }}" },
+            { title: 'Research Scientist', company: 'Science Labs', location: 'Bangalore', experience: '5+ years', type: 'Part-Time', image_url: "{{ url_for('static', filename='images/companies/airbnb.svg') }}" },
+            { title: 'Business Development Manager', company: 'BizDev Corp', location: 'Hyderabad', experience: '2-5 years', type: 'Contract', image_url: "{{ url_for('static', filename='images/companies/airbnb.svg') }}" },
+            { title: 'HR Specialist', company: 'People Solutions', location: 'Mumbai', experience: '0-2 years', type: 'Full-Time', image_url: "{{ url_for('static', filename='images/companies/airbnb.svg') }}" },
+            { title: 'Blockchain Developer', company: 'Blockchain Inc', location: 'Bangalore', experience: '2-5 years', type: 'Part-Time', image_url: "{{ url_for('static', filename='images/companies/airbnb.svg') }}" },
+            { title: 'Game Developer', company: 'Gaming Studio', location: 'Hyderabad', experience: '5+ years', type: 'Full-Time', image_url: "{{ url_for('static', filename='images/companies/airbnb.svg') }}" },
+            { title: 'Financial Analyst', company: 'Finance Experts', location: 'Mumbai', experience: '2-5 years', type: 'Contract', image_url: "{{ url_for('static', filename='images/companies/airbnb.svg') }}" },
+            { title: 'IT Support Specialist', company: 'Tech Support', location: 'Bangalore', experience: '0-2 years', type: 'Part-Time', image_url: "{{ url_for('static', filename='images/companies/airbnb.svg') }}" },
+            { title: 'Marketing Manager', company: 'Marketing Pros', location: 'Hyderabad', experience: '2-5 years', type: 'Full-Time', image_url: "{{ url_for('static', filename='images/companies/airbnb.svg') }}" },
+            { title: 'Web Designer', company: 'Design Studio', location: 'Mumbai', experience: '5+ years', type: 'Contract', image_url: "{{ url_for('static', filename='images/companies/airbnb.svg') }}" },
+            { title: 'Cloud Solutions Architect', company: 'Cloud Innovators', location: 'Bangalore', experience: '2-5 years', type: 'Full-Time', image_url: "{{ url_for('static', filename='images/companies/airbnb.svg') }}" },
+            { title: 'Database Engineer', company: 'Data Solutions', location: 'Hyderabad', experience: '5+ years', type: 'Part-Time', image_url: "{{ url_for('static', filename='images/companies/airbnb.svg') }}" },
+            { title: 'Software Architect', company: 'Tech Architects', location: 'Mumbai', experience: '2-5 years', type: 'Full-Time', image_url: "{{ url_for('static', filename='images/companies/software_architect.jpg') }}" },
+            { title: 'UX Researcher', company: 'UX Innovations', location: 'Bangalore', experience: '0-2 years', type: 'Contract', image_url: "{{ url_for('static', filename='images/ux_researcher.jpg') }}" },
+            { title: 'IT Consultant', company: 'Consulting Experts', location: 'Hyderabad', experience: '2-5 years', type: 'Full-Time', image_url: "{{ url_for('static', filename='images/companies/it_consultant.jpg') }}" },
+            { title: 'Network Security Engineer', company: 'Secure Network', location: 'Mumbai', experience: '5+ years', type: 'Part-Time', image_url: "{{ url_for('static', filename='images/companies/network_security_engineer.jpg') }}" },
+            { title: 'System Administrator', company: 'Sys Admin Co.', location: 'Bangalore', experience: '0-2 years', type: 'Full-Time', image_url: "{{ url_for('static', filename='images/companies/system_administrator.jpg') }}" },
+            { title: 'Data Engineer', company: 'Big Data Co.', location: 'Hyderabad', experience: '2-5 years', type: 'Contract', image_url: "{{ url_for('static', filename='images/companies/data_engineer.jpg') }}" },
+            { title: 'Automation Tester', company: 'Test Solutions', location: 'Mumbai', experience: '5+ years', type: 'Part-Time', image_url: "{{ url_for('static', filename='images/companies/automation_tester.jpg') }}" },
+            { title: 'DevOps Specialist', company: 'DevOps Solutions', location: 'Bangalore', experience: '2-5 years', type: 'Full-Time', image_url: "{{ url_for('static', filename='images/companies/devops_specialist.jpg') }}" },
+            { title: 'Technical Project Manager', company: 'Project Management Inc', location: 'Hyderabad', experience: '5+ years', type: 'Contract', image_url: "{{ url_for('static', filename='images/companies/technical_project_manager.jpg') }}" },
+            { title: 'Game Designer', company: 'Game Studios', location: 'Mumbai', experience: '0-2 years', type: 'Part-Time', image_url: "{{ url_for('static', filename='images/companies/game_designer.jpg') }}" },
+            { title: 'IT Auditor', company: 'Audit Pros', location: 'Bangalore', experience: '2-5 years', type: 'Full-Time', image_url: "{{ url_for('static', filename='images/companies/it_auditor.jpg') }}" },
+            { title: 'QA Engineer', company: 'Quality Co.', location: 'Hyderabad', experience: '5+ years', type: 'Contract', image_url: "{{ url_for('static', filename='images/companies/qa_engineer.jpg') }}" },
+            { title: 'Content Strategist', company: 'Content Solutions', location: 'Mumbai', experience: '2-5 years', type: 'Part-Time', image_url: "{{ url_for('static', filename='images/companies/content_strategist.jpg') }}" },
+            { title: 'Technical Support Engineer', company: 'Tech Support Inc', location: 'Bangalore', experience: '0-2 years', type: 'Full-Time', image_url: "{{ url_for('static', filename='images/companies/technical_support_engineer.jpg') }}" },
+            { title: 'Cloud DevOps Engineer', company: 'Cloud DevOps Co.', location: 'Hyderabad', experience: '2-5 years', type: 'Contract', image_url: "{{ url_for('static', filename='images/companies/cloud_devops_engineer.jpg') }}" },
+            { title: 'Marketing Specialist', company: 'Marketing Masters', location: 'Mumbai', experience: '5+ years', type: 'Part-Time', image_url: "{{ url_for('static', filename='images/companies/marketing_specialist.jpg') }}" },
+            { title: 'IT Project Manager', company: 'IT Management Inc', location: 'Bangalore', experience: '2-5 years', type: 'Full-Time', image_url: "{{ url_for('static', filename='images/companies/it_project_manager.jpg') }}" },
+            { title: 'Software Development Manager', company: 'Dev Managers', location: 'Mumbai', experience: '2-5 years', type: 'Full-Time', image_url: "{{ url_for('static', filename='images/companies/messanger.svg') }}" },
+            { title: 'Web Analyst', company: 'Web Insights', location: 'Hyderabad', experience: '5+ years', type: 'Contract', image_url: "{{ url_for('static', filename='images/companies/web_analyst.jpg') }}" },
+            { title: 'Embedded Software Engineer', company: 'Embedded Tech', location: 'Bangalore', experience: '0-2 years', type: 'Part-Time', image_url: "{{ url_for('static', filename='images/companies/messanger.svg') }}" },
+            { title: 'Network Administrator', company: 'Network Solutions', location: 'Hyderabad', experience: '2-5 years', type: 'Full-Time', image_url: "{{ url_for('static', filename='images/companies/messanger.svg') }}" },
+            { title: 'Data Architect', company: 'Data Architecture', location: 'Mumbai', experience: '5+ years', type: 'Contract', image_url: "{{ url_for('static', filename='images/companies/messanger.svg') }}" },
+            { title: 'Technical Sales Engineer', company: 'Sales Tech', location: 'Bangalore', experience: '2-5 years', type: 'Part-Time', image_url: "{{ url_for('static', filename='images/companies/messanger.svg') }}" },
+            { title: 'Web Development Manager', company: 'Web Dev Co.', location: 'Hyderabad', experience: '5+ years', type: 'Full-Time', image_url: "{{ url_for('static', filename='images/companies/messanger.svg') }}" }
+        ];
+
+
+        // Function to display jobs
+        function displayJobs(filteredJobs) {
+            const jobListings = document.getElementById('jobs-container');
+            jobListings.innerHTML = '';
+
+            if (filteredJobs.length > 0) {
+                filteredJobs.forEach(job => {
+                    jobListings.innerHTML += `
+              <div class="bg-white p-6 shadow-md rounded-lg max-w-sm border border-gray-200">
+    <!-- Job logo -->
+    <div class="flex justify-between items-center mb-4">
+        <img src="${job.image_url}" alt="${job.title}" class="w-12 h-12 rounded-full">
+        <button class="text-gray-400 hover:text-gray-600">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark-fill" viewBox="0 0 16 16">
+  <path d="M2 2v13.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2"/>
+</svg>
+        </button>
+    </div>
+
+    <!-- Job Details -->
+    <div>
+        <h3 class="text-lg font-semibold text-gray-900">${job.title}</h3>
+        <p class="text-sm text-gray-500">${job.company} · ${job.time}</p>
+        <div class="flex space-x-2 mt-2">
+            <span class="bg-gray-200 text-gray-700 text-xs font-semibold px-2 py-1 rounded">${job.type}</span>
+            <span class="bg-gray-200 text-gray-700 text-xs font-semibold px-2 py-1 rounded">${job.level}</span>
+        </div>
+    </div>
+
+    <!-- Salary and Location -->
+    <div class="mt-4">
+        <p class="text-xl font-semibold text-gray-800">${job.salary}</p>
+        <p class="text-sm text-gray-500">${job.location}</p>
+    </div>
+
+    <!-- Apply Button -->
+    <div class="mt-4">
+        <button class="bg-black text-white px-4 py-2 rounded-full hover:bg-gray-800 transition-colors w-full">
+            Apply now
+        </button>
+    </div>
+</div>
+            `;
+                });
+            } else {
+                jobListings.innerHTML = '<p class="text-gray-600">No jobs found matching your criteria.</p>';
+            }
+        }
+
+        // Initially populate recommended jobs
+        displayJobs(jobs);
+
+        function getRandomSubset(array, size) {
+            const shuffled = array.slice().sort(() => 0.5 - Math.random());
+            return shuffled.slice(0, size);
+        }
+
+        function createJobCard(job) {
+            return `
+           <div class="bg-white p-6 shadow-md rounded-lg max-w-sm border border-gray-200">
+    <!-- Job logo -->
+    <div class="flex justify-between items-center mb-4">
+        <img src="${job.image_url}" alt="${job.title}" class="w-12 h-12 rounded-full">
+        <button class="text-gray-400 hover:text-gray-600">
+             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark-fill" viewBox="0 0 16 16">
+  <path d="M2 2v13.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2"/>
+</svg>
+        </button>
+    </div>
+
+    <!-- Job Details -->
+    <div>
+        <h3 class="text-lg font-semibold text-gray-900">${job.title}</h3>
+        <p class="text-sm text-gray-500">${job.company} · ${job.time}</p>
+        <div class="flex space-x-2 mt-2">
+            <span class="bg-gray-200 text-gray-700 text-xs font-semibold px-2 py-1 rounded">${job.type}</span>
+            <span class="bg-gray-200 text-gray-700 text-xs font-semibold px-2 py-1 rounded">${job.level}</span>
+        </div>
+    </div>
+
+    <!-- Salary and Location -->
+    <div class="mt-4">
+        <p class="text-xl font-semibold text-gray-800">${job.salary}</p>
+        <p class="text-sm text-gray-500">${job.location}</p>
+    </div>
+
+    <!-- Apply Button -->
+    <div class="mt-4">
+        <button class="bg-black text-white px-4 py-2 rounded-full hover:bg-gray-800 transition-colors w-full">
+            Apply now
+        </button>
+    </div>
+</div>
+
+        `;
+        }
+
+        function renderJobCards(jobs) {
+            const container = document.getElementById('recommended-jobs');
+            const numCards = Math.floor(Math.random() * (6 - 3 + 1)) + 3; // Random number between 3 and 6
+            const subset = getRandomSubset(jobs, numCards);
+            container.innerHTML = subset.map(createJobCard).join('');
+        }
+
+        // Call this function to render the job cards
+        renderJobCards(jobs);
+    </script>
+
+
+    {% endblock %}
